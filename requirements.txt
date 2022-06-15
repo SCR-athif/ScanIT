@@ -2,4 +2,4 @@ pyfiglet #figlet
 python-whois #whoislookup
 termcolor #coloring
 builtwith #for technology
-
+scapy #osscanning
