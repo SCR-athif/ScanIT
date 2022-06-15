@@ -9,7 +9,7 @@ data with minimum time and in an efficient manner
 2. pip install -r requirements.txt
 3. python3 main.py or ./main.py
 
-## Addtional
+## Additional
 
 You can read scanned data from history text file, all kind of **scan result** will be recoded in there.
 
