@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import socket
 import Output
 import builtwith
@@ -28,7 +28,6 @@ def rpt():
 
     except socket.error:
         print("Couldn't connect to server")
-
 def spt(IP):
     try:
         port=str(input("Enter your port "))
@@ -50,6 +49,16 @@ def spt(IP):
 
     except socket.error:
         print("Couldn't connect to server")
+def portscan():
+    print("Choose option: \n 1. Single Entry \n 2. Range Entry")
+    a=int(input("Enter here: "))
+    if (a==1):
+        IP = input('Enter victims IP: ')
+        Output.newline()
+        spt(IP)
+    elif (a==2):
+        rpt()
+
 
 def tlook():
     url=(input("Enter URL: "))
@@ -58,13 +67,19 @@ def tlook():
     for key,value in a.items():
         Output.tdata(key,value)
         print(key,":",", ".join(value))
-
 def wlook(q):
     a=whois.whois(q)
     a.server
     a.state
     Output.wldata(a)
     return a
+def webscan():
+    print("Choose option: \n 1. Website Techology Scan \n 2. Website Whois Lookup")
+    a = int(input("Enter here: "))
+    if (a==1):
+        tlook()
+    elif (a==2):
+        print(wlook(input("Enter Domian: ")))
 
 def version():
     IP = input("Enter Victims IP:")
@@ -74,7 +89,6 @@ def version():
         sbs(IP)
     elif (a==1):
         rbs(IP)
-
 def sbs(IP):
     s = socket.socket()
     s.settimeout(5)
@@ -87,7 +101,6 @@ def sbs(IP):
         a = str("port {} is open\n\t version and service running or port {} : {}".format(port, port, s.recv(1024)))
         print(a)
         Output.bdata(a)
-
 def rbs(IP):
     host = IP
     n1 = input("Enter starting port: ")
