@@ -3,7 +3,18 @@ import socket
 import Output
 import builtwith
 import whois
+from scapy.all import *
+from scapy.layers.inet import IP, ICMP
 
+def portscan():
+    print("Choose option: \n 1. Single Entry \n 2. Range Entry")
+    a=int(input("Enter here: "))
+    if (a==1):
+        IP = input('Enter victims IP: ')
+        Output.newline()
+        spt(IP)
+    elif (a==2):
+        rpt()
 def rpt():
     IP = input('Enter victims IP: ')
     n1 = int(input('starting port '))
@@ -49,17 +60,14 @@ def spt(IP):
 
     except socket.error:
         print("Couldn't connect to server")
-def portscan():
-    print("Choose option: \n 1. Single Entry \n 2. Range Entry")
-    a=int(input("Enter here: "))
+
+def webscan():
+    print("Choose option: \n 1. Website Techology Scan \n 2. Website Whois Lookup")
+    a = int(input("Enter here: "))
     if (a==1):
-        IP = input('Enter victims IP: ')
-        Output.newline()
-        spt(IP)
+        tlook()
     elif (a==2):
-        rpt()
-
-
+        print(wlook(input("Enter Domian: ")))
 def tlook():
     url=(input("Enter URL: "))
     a=builtwith.parse(url)
@@ -73,13 +81,6 @@ def wlook(q):
     a.state
     Output.wldata(a)
     return a
-def webscan():
-    print("Choose option: \n 1. Website Techology Scan \n 2. Website Whois Lookup")
-    a = int(input("Enter here: "))
-    if (a==1):
-        tlook()
-    elif (a==2):
-        print(wlook(input("Enter Domian: ")))
 
 def version():
     IP = input("Enter Victims IP:")
@@ -116,3 +117,19 @@ def rbs(IP):
             print(a)
             Output.bdata(a)
 
+def osscanning():
+    os = ''
+    target = input("Enter the Ip address:")
+    pack = IP(dst=target) / ICMP()
+    resp = sr1(pack, timeout=3)
+    if resp:
+        if IP in resp:
+            ttl = resp.getlayer(IP).ttl
+            if ttl <= 64:
+                print(ttl)
+                os = 'Linux'
+            elif ttl > 64:
+                os = 'Windows'
+            else:
+                print('Not Found')
+            print(f'\n\nTTL = {ttl} \n*{os}* Operating System is Detected \n\n')
