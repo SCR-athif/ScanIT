@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 import os
 import time
 import pyfiglet
@@ -9,7 +9,7 @@ import scan
 from termcolor import colored
 
 print('-'*65)
-scanit=colored(pyfiglet.figlet_format("S c a n I T",'arrows'),'cyan')
+scanit=colored(pyfiglet.figlet_format("S c a n I T"),'cyan')
 for i in scanit:
     print(i,end='')
     time.sleep(.001)
@@ -20,20 +20,14 @@ print("time",date.time())
 print('-'*60,"\n")
 
 
-print("Choose option: \n 1. Port scanning with range entry \n 2. Port Scanning with single entry \n 3. Website technology scanning \n 4. Website lookup\n 5. Version Scanning")
+print("Choose option: \n 1. Simple Port Scan \n 2. Web Scanning \n 3. Version Scanning")
 a=int(input("Enter here: "))
 
 if (a==1):
-    scan.rpt()
+    scan.portscan()
 elif (a==2):
-    IP = input('Enter victims IP: ')
-    Output.newline()
-    scan.spt(IP)
+    scan.webscan()
 elif (a==3):
-    scan.tlook()
-elif (a==4):
-    print(scan.wlook(input("Enter Domian: ")))
-elif (a==5):
     scan.version()
 else:
     print("Wrong Entry")
