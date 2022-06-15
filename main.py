@@ -21,13 +21,17 @@ print('-'*60,"\n")
 
 
 print("Choose option: \n 1. Simple Port Scan \n 2. Web Scanning \n 3. Version Scanning")
-a=int(input("Enter here: "))
+try:
+    a = int(input("Enter here: "))
 
-if (a==1):
-    scan.portscan()
-elif (a==2):
-    scan.webscan()
-elif (a==3):
-    scan.version()
-else:
-    print("Wrong Entry")
+    if (a == 1):
+        scan.portscan()
+    elif (a == 2):
+        scan.webscan()
+    elif (a == 3):
+        scan.version()
+    else:
+        print("Wrong Entry")
+except KeyboardInterrupt:
+    print("unwanted input. Exiting...")
+
