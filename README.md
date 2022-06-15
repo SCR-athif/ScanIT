@@ -6,7 +6,7 @@ data with minimum time and in an efficient manner
 
 #Installation steps:-
 1. chmod +x main.py scan.py Output.py
-2. pip install -r requirements
+2. pip install -r requirements.txt
 3. python3 main.py or ./main.py
 
 ##Adddtional
