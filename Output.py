@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 def ptopen(IP,port):
     with open("history.txt", "a") as m:
