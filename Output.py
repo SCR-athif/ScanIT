@@ -35,3 +35,9 @@ def osdata(a):
         for i in range(100):
             m.write("-")
         m.write(f'{a}')
+def fdata(a,b):
+    with open("history.txt","a") as m:
+        m.write(f'\n{a} is {b} \n')
+def total(a):
+    with open("history.txt","a") as m:
+        m.write(f'\n{a} is up\n')
