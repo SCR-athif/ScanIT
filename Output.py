@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
-def ptopen(IP,port):
+def ptopen(IP, port,ser):
     with open("history.txt", "a") as m:
-        m.write("\n{} {} {} {}\n".format(IP, ':port', port, 'is open'))
-def ptclose(IP,port):
+        m.write("\n{} {} {} {} {} {}\n".format(IP, ':port', port, 'is open',":",ser))
+def ptclose(IP, port):
     with open("history.txt", "a") as m:
         m.write("\n{} {} {} {}\n".format(IP, ':port', port, 'is closed'))
 def newline():
@@ -13,7 +13,7 @@ def newline():
         m.write("\nnew scan\n")
         for i in range(100):
             m.write("-")
-def tdata(key,value):
+def tdata(key, value):
     with open("history.txt","a") as m:\
         m.write('\n{} {} {}\n'.format(key,":",", ".join(value)))
 def wldata(a):
@@ -27,3 +27,11 @@ def wldata(a):
 def bdata(a):
     with open("history.txt", "a") as m:
         m.write('\n{}\n'.format(a))
+def osdata(a):
+    with open("history.txt", "a") as m:
+        for i in range(100):
+            m.write("-")
+        m.write("\nnew scan\n")
+        for i in range(100):
+            m.write("-")
+        m.write(f'{a}')
