@@ -5,10 +5,11 @@ import builtwith
 import whois
 import pyfiglet
 import datetime
-from termcolor import colored
-from scapy.all import *
-from scapy.layers.inet import IP, ICMP
+import nmap
 from os import system
+def sudo():
+    system('sudo ./osscanning.py')
+
 
 def portscan():                                                         #port scan
     system('clear')
@@ -120,7 +121,7 @@ def version():                                                                  
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    IP = input("Enter Victims IP:")
+    IP = input("Enter Victims IP: ")
     print("Choose option: \n 1. Version scanning with range entry \n 2. Version Scanning with single entry")
     a=int(input("Enter your option: "))
     if (a==2):
@@ -136,19 +137,26 @@ def sbs(IP):
     if s.connect_ex((host, int(port))):
         sbs(IP)
     else:
+        print("\n\nport        status         service           version")
         Output.newline()
-        if s.settimeout(5):
-            print("service scanning is not possible")
-        else:
-            a = str("port {} is open\n\t version and service running or port {} : {}".format(port, port, socket.getservbyport(int(port))))
-            print(a)
-            Output.bdata(a)
+        nm = nmap.PortScanner()
+        a = nm.scan(IP, port, arguments='-sV')
+        b = a['scan']
+        c = b[IP]
+        d = c['tcp']
+        e = d[int(port)]
+        f = e['version']
+        serv=socket.getservbyport(int(port))
+        g=(f'{port}           open           {serv}              {f}')
+        print(g)
+        Output.bdata(g)
 
 
 def rbs(IP):
     host = IP
     n1 = input("Enter starting port: ")
     n2 = input("Enter Ending port: ")
+    print("\n\nport        status         service           version")
     Output.newline()
     try:
         for port in range(int(n1), int(n2)):
@@ -157,37 +165,19 @@ def rbs(IP):
             if s.connect_ex((host, int(port))):
                 pass
             else:
-                a = str("port {} is open\n\t version and service running or port {} : {}\n".format(port, port, s.recv(1024)))
-                print(a)
-                Output.bdata(a)
+                nm = nmap.PortScanner()
+                a = nm.scan(IP, str(port), arguments='-sV')
+                b = a['scan']
+                c = b[IP]
+                d = c['tcp']
+                e = d[int(port)]
+                f = e['version']
+                serv = socket.getservbyport(int(port))
+                g = (f'{port}           open           {serv}              {f}')
+                print(g)
+                Output.bdata(g)
     except TimeoutError:
         print("Timeout retry")
-
-def osscanning():                                                   #os detection scannin
-    system('clear')
-    print("-" * 60)
-    txt=colored(pyfiglet.figlet_format("S c a n I T"), 'yellow')
-    for i in txt:
-        print(i, end='')
-        time.sleep(.001)
-    print("-" * 60)
-    os = ''
-    target = input("Enter the Ip address:")
-    pack = IP(dst=target) / ICMP()
-    resp = sr1(pack, timeout=3)
-    if resp:
-        if IP in resp:
-            ttl = resp.getlayer(IP).ttl
-            if ttl <= 64:
-                print(ttl)
-                os = 'Linux'
-            elif ttl > 64:
-                os = 'Windows'
-            else:
-                print('Not Found')
-            a = f'\n\nTTL = {ttl} \n*{os}* Operating System is Detected \n\n'
-            Output.osdata(a)
-            print(a)
 
 
 def Total():
