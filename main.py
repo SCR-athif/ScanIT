@@ -19,19 +19,33 @@ print("date", date.date())
 print("time", date.time())
 print('-'*60, "\n")
 
-print("Choose option: \n 1. Simple Port Scan \n 2. Web Scanning \n 3. Version Scanning \n 4. OS Scanning \n 5. Total Hosts finding")
+a="""
+Choose option:
+    1. Simple Port Scan
+    2. Live host hunt
+    3. Version Scan
+    4. OS Detection Scan
+    5. Aggressive Scanning
+    6. Host Max Data Gathering
+    7. CVE scan
+    8. Script Scan
+    9. Web Scan
+"""
+
+print(a)
 try:
     a = int(input("Enter here: "))
     if a == 1:
         scan.portscan()
     elif a == 2:
-        scan.webscan()
+        scan.Total()
     elif a == 3:
         scan.version()
     elif a == 4:
         scan.sudo()
-    elif a == 5:
-        scan.Total()
+
+    elif a == 9:
+        scan.webscan()
     else:
         print("Wrong Entry")
 
