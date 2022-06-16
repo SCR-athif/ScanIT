@@ -96,16 +96,17 @@ def Total():
         if '/24' in IP:
             nm.scan(hosts=IP, arguments='-n -sP')
             hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
-
+            Output.newline()
             for host, status in hosts_list:
                 print(host + ' ' + status)
+                Output.fdata(host,status)
         else:
             nm.scan(hosts=IP, arguments='-n -sP')
             hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
-
+            Output.newline()
             for host, status in hosts_list:
                 print(host + ' is ' + status)
-
+                Output.fdata(host, status)
     def sscan(addr):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket.setdefaulttimeout(1)
@@ -141,18 +142,22 @@ def Total():
             entry()
             global port
             port = input("Enter port number :")
+            Output.newline()
             for ip in range(st1, en1):
                 addr = net2 + str(ip)
                 if (sscan(addr)):
+                    Output.total(addr)
                     print(addr, "is up")
         elif a==3:
             entry()
             n1 = input("Enter starting range:")
             n2 = input("Enter ending range:")
+            Output.newline()
             for ip in range(st1, en1):
                 addr = net2 + str(ip)
                 for port1 in range(int(n1), int(n2)):
                     if (rscan(addr, port1)):
+                        Output.total(addr)
                         print(addr, "is up")
     def entry():
         global net, net1, l, net2, st1, en1, n1, n2
