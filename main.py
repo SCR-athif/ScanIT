@@ -6,6 +6,7 @@ import datetime
 import scan
 from termcolor import colored
 
+
 print('-'*60)
 scanit = colored(pyfiglet.figlet_format("S c a n I T"), 'cyan')
 for i in scanit:
@@ -28,7 +29,7 @@ try:
     elif a == 3:
         scan.version()
     elif a == 4:
-        scan.osscanning()
+        scan.sudo()
     elif a == 5:
         scan.Total()
     else:
