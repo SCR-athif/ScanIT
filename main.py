@@ -43,7 +43,12 @@ try:
         scan.version()
     elif a == 4:
         scan.sudo()
-
+    elif a==5:
+        scan.agg()
+    elif a==6:
+        scan.data()
+    elif a==7:
+        scan.cve_scan()
     elif a == 9:
         scan.webscan()
     else:
@@ -51,3 +56,5 @@ try:
 
 except KeyboardInterrupt:
     print("unwanted input. Exiting...")
+except TypeError:
+    print("Invalid Type   Exiting....")
