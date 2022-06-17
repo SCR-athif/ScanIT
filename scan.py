@@ -9,7 +9,6 @@ import time
 from datetime import datetime
 from os import system
 from termcolor import colored
-
 from tqdm import tqdm
 
 def portscan():                                                         #port scan
@@ -248,6 +247,7 @@ def version():                                                                  
     total = t2 - t1
     print("Scanning completed in: ", total)
 
+
 def sbs(IP):
     s = socket.socket()
     s.settimeout(2)
@@ -354,6 +354,30 @@ def cve_scan():
     print("Scanning completed in: ", total)
 
 
+def scriptscan():
+    system('clear')
+    print("-" * 60)
+    txt = colored(pyfiglet.figlet_format("ScanIT", 'banner'), 'green')
+    t1 = datetime.now()
+    for i in txt:
+        print(i, end='')
+        time.sleep(.001)
+    print("-" * 60)
+    IP=str(input("\n\nEnter the IP for script scan:  "))
+    nm = map.nmap.PortScanner()
+    p=colored("+","green")
+    result = nm.scan(hosts=IP, arguments='-p 1-1024 -sC')
+    for i in result['scan'][IP]['hostscript']:
+        print('\n',p, i)
+        Output.cdata(i)
+    print('\n\n')
+    for i in tqdm(range(10),'Scanning in Progress',colour='red'):
+        time.sleep(.1)
+    t2 = datetime.now()
+    total = t2 - t1
+    print("Scanning completed in: ", total)
+
+
 def webscan():                                                                      #webscan
     system('clear')
     print("-" * 60)
@@ -376,6 +400,7 @@ def webscan():                                                                  
     total = t2 - t1
     print("Scanning completed in: ", total)
 
+
 def tlook():
     url = (input("Enter URL: "))
     a = builtwith.parse(url)
@@ -383,7 +408,6 @@ def tlook():
     for key, value in a.items():
         Output.tdata(key, value)
         print(key, ":", ", ".join(value))
-
 
 
 def wlook():
