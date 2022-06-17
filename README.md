@@ -1,4 +1,4 @@
-  GNU nano 6.3                                                                                                      README.md                                                                                                               
+                                                                      
 #ScanIT
 
 A **better, efficient, user-friendly** network scanning tool. Which help an ethical hacker
