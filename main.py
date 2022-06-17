@@ -34,13 +34,13 @@ Choose option:
 print(a)
 try:
     a = int(input("Enter here: "))
-    if a == 1:
+    if a==1:
         scan.portscan()
-    elif a == 2:
+    elif a==2:
         scan.Total()
-    elif a == 3:
+    elif a==3:
         scan.version()
-    elif a == 4:
+    elif a==4:
         scan.sudo()
     elif a==5:
         scan.agg()
