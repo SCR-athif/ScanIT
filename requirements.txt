@@ -2,5 +2,5 @@ pyfiglet #figlet
 python-whois #whoislookup
 termcolor #coloring
 builtwith #for technology
-scapy #osscanning
-python-nmap
+scapy #scappy
+tqdm #process bar
