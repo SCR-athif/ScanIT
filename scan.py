@@ -79,7 +79,7 @@ def spt(IP):
             Output.ptopen(IP, port, serv)
             print(f"{port}         open       {serv}")
             print('\n\n')
-            for i in tqdm(range(1)):
+            for i in tqdm(range(10)):
                 time.sleep(.01)
             t2 = datetime.now()
             total = t2 - t1
@@ -183,7 +183,7 @@ def Total():
         en1 = en1 + 1
     run1()
     print('\n\n')
-    for i in tqdm(range(1)):
+    for i in tqdm(range(10)):
         time.sleep(.01)
     t2 = datetime.now()
     total = t2 - t1
@@ -230,7 +230,7 @@ def sbs(IP):
         g=(f'{port}           open           {serv}              {ver}')
         print(g)
         Output.bdata(g)
-        for i in tqdm(range(1)):
+        for i in tqdm(range(10)):
             time.sleep(.01)
         t2 = datetime.now()
         total = t2 - t1
@@ -296,7 +296,7 @@ def webscan():                                                                  
     elif (a==2):
         wlook()
     print('\n\n')
-    for i in tqdm(range(1)):
+    for i in tqdm(range(10)):
         time.sleep(.01)
     t2 = datetime.now()
     total = t2 - t1
@@ -310,7 +310,7 @@ def tlook():
     for key, value in a.items():
         Output.tdata(key, value)
         print(key, ":", ", ".join(value))
-    for i in tqdm(range(1)):
+    for i in tqdm(range(10)):
         time.sleep(.01)
     t2 = datetime.now()
     total = t2 - t1
