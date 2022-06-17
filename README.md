@@ -26,7 +26,7 @@ Mohammed Abdu Rahman - CVE scanning
 Anay K - Script Scanning  
 Midhun T - Aggressive Sacnning  
 Mohammed Hisham - Host data gathering  
-Abishek - OS detection Scanning**
+Abhishek - OS detection Scanning**
 
 
 
