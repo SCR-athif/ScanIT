@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-
 import time
 import pyfiglet
 import datetime
@@ -49,7 +48,9 @@ try:
         scan.data()
     elif a==7:
         scan.cve_scan()
-    elif a == 9:
+    elif a==8:
+	    scan.scriptscan()
+    elif a==9:
         scan.webscan()
     else:
         print("Wrong Entry")
