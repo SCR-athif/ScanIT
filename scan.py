@@ -4,12 +4,12 @@ import Output
 import builtwith
 import wlookup
 import pyfiglet
+import map
 from datetime import datetime
-import nmap
 from os import system
 from termcolor import colored
 import time
-
+from tqdm import tqdm
 
 def portscan():                                                         #port scan
     system('clear')
@@ -44,7 +44,14 @@ def rpt():
             else:
                 serv=socket.getservbyport(int(port))
                 Output.ptopen(IP,port,serv)
+                t1=datetime.now()
                 print(f"{port}         open       {serv}")
+        print('\n\n')
+        for i in tqdm(range(10)):
+            time.sleep(.01)
+        t2 = datetime.now()
+        total = t2 - t1
+        print("Scanning completed in: ", total)
 
     except KeyboardInterrupt:
         print("unwanted input")
@@ -61,6 +68,7 @@ def spt(IP):
         port=str(input("Enter your port: "))
         s= socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         s.settimeout(2)
+        t1=datetime.now()
         print('port     Status       service')
         if s.connect_ex((IP, int(port))):
             Output.ptclose(IP, port)
@@ -70,7 +78,12 @@ def spt(IP):
             serv = socket.getservbyport(int(port))
             Output.ptopen(IP, port, serv)
             print(f"{port}         open       {serv}")
-
+            print('\n\n')
+            for i in tqdm(range(1)):
+                time.sleep(.01)
+            t2 = datetime.now()
+            total = t2 - t1
+            print("Scanning completed in: ", total)
     except KeyboardInterrupt:
         print("unwanted input")
 
@@ -90,7 +103,7 @@ def Total():
     print("-" * 60)
     t1 = datetime.now()
     def fscan():
-        nm = nmap.PortScanner()
+        nm = map.nmap.PortScanner()
         IP = input("Enter IP: ")
 
         if '/24' in IP:
@@ -169,6 +182,9 @@ def Total():
         en1 = int(input("Enting host: "))
         en1 = en1 + 1
     run1()
+    print('\n\n')
+    for i in tqdm(range(1)):
+        time.sleep(.01)
     t2 = datetime.now()
     total = t2 - t1
     print("Scanning completed in: ", total)
@@ -177,7 +193,8 @@ def Total():
 def version():                                                                                      #version scanning
     system('clear')
     print("-" * 60)
-    txt=colored(pyfiglet.figlet_format("S c a n I T",'arrows'),'blue')
+    txt=colored(pyfiglet.figlet_format("    S c a n I T",'arrows'),'blue')
+    t1=datetime.now()
     for i in txt:
         print(i, end='')
         time.sleep(.001)
@@ -189,30 +206,42 @@ def version():                                                                  
         sbs(IP)
     elif (a==1):
         rbs(IP)
-
+    print('\n\n')
+    for i in tqdm(range(10)):
+        time.sleep(.01)
+    t2 = datetime.now()
+    total = t2 - t1
+    print("Scanning completed in: ", total)
 
 def sbs(IP):
     s = socket.socket()
     host = IP
     port = input("Enter Port: ")
+    t1=datetime.now()
     if s.connect_ex((host, int(port))):
         sbs(IP)
     else:
         print("\n\nport        status         service           version")
         Output.newline()
-        nm = nmap.PortScanner()
+        nm = map.nmap.PortScanner()
         a = nm.scan(IP, port, arguments='-sV')
         serv=socket.getservbyport(int(port))
         ver=a.get('scan', {}).get(IP, {}).get('tcp', {}).get(int(port), {}).get('version')
         g=(f'{port}           open           {serv}              {ver}')
         print(g)
         Output.bdata(g)
+        for i in tqdm(range(1)):
+            time.sleep(.01)
+        t2 = datetime.now()
+        total = t2 - t1
+        print("Scanning completed in: ", total)
 
 
 def rbs(IP):
     host = IP
     n1 = input("Enter starting port: ")
     n2 = input("Enter Ending port: ")
+    t1=datetime.now()
     print("\n\nport        status         service           version")
     Output.newline()
     try:
@@ -222,13 +251,18 @@ def rbs(IP):
             if s.connect_ex((host, int(port))):
                 pass
             else:
-                nm = nmap.PortScanner()
+                nm = map.nmap.PortScanner()
                 a = nm.scan(IP, str(port), arguments='-sV')
                 serv = socket.getservbyport(int(port))
                 ver = a.get('scan', {}).get(IP, {}).get('tcp', {}).get(int(port), {}).get('version')
                 g = (f'{port}           open           {serv}              {ver}')
                 print(g)
                 Output.bdata(g)
+        for i in tqdm(range(10)):
+            time.sleep(.01)
+        t2 = datetime.now()
+        total = t2 - t1
+        print("Scanning completed in: ", total)
     except TimeoutError:
         print("Timeout retry")
 
@@ -237,10 +271,20 @@ def sudo():
     system('sudo ./osscanning.py')
 
 
+def cve_scan():
+    IP = str(input("Enter the Ip you want to scan for cves:  "))
+    nm = map.nmap.PortScanner()
+    result = nm.scan(hosts=IP, arguments='-p 1-1000 -sV -Pn --script vuln')
+    print(result)
+    for keys,values in result.items():          #This for loop will help to select the vulerabilities list in the
+        print(keys,':',", ".join(values))
+
+
 def webscan():                                                                      #webscan
     system('clear')
     print("-" * 60)
     txt=colored(pyfiglet.figlet_format("ScanIT", 'banner'), 'green')
+    t1=datetime.now()
     for i in txt:
         print(i, end='')
         time.sleep(.001)
@@ -251,21 +295,37 @@ def webscan():                                                                  
         tlook()
     elif (a==2):
         wlook()
-
+    print('\n\n')
+    for i in tqdm(range(1)):
+        time.sleep(.01)
+    t2 = datetime.now()
+    total = t2 - t1
+    print("Scanning completed in: ", total)
 
 def tlook():
     url = (input("Enter URL: "))
     a = builtwith.parse(url)
     Output.newline()
+    t1=datetime.now()
     for key, value in a.items():
         Output.tdata(key, value)
         print(key, ":", ", ".join(value))
+    for i in tqdm(range(1)):
+        time.sleep(.01)
+    t2 = datetime.now()
+    total = t2 - t1
+    print("Scanning completed in: ", total)
 
 
 def wlook():
     host = input("Enter a host: ")
+    t1=datetime.now()
     a=wlookup.whois(host)
     Output.wldata(a)
     print(a)
-
+    for i in tqdm(range(10)):
+        time.sleep(.01)
+    t2 = datetime.now()
+    total = t2 - t1
+    print("Scanning completed in: ", total)
 
