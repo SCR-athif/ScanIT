@@ -14,7 +14,7 @@ from termcolor import colored
 if dataos.os=='Windows':
     system('clear')
     print("-" * 60)
-    txt = colored(pyfiglet.figlet_format("ScanIT", 'banner4'), 'green')
+    txt = colored(pyfiglet.figlet_format("ScanIT", 'banner'), 'green')
     for i in txt:
         print(i, end='')
         time.sleep(.001)
