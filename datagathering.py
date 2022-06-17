@@ -2,14 +2,14 @@
 import socket
 import map
 import time
-from tqdm import tqdm
-from os import system
-from termcolor import colored
 import pyfiglet
 import dataos
 import Output
+import requests
 from datetime import datetime
-
+from tqdm import tqdm
+from os import system
+from termcolor import colored
 
 if dataos.os=='Windows':
     system('clear')
@@ -49,6 +49,21 @@ if dataos.os=='Windows':
         Output.cdata(i)
         print('\n', p, i)
 
+
+    def get_location():
+        ip_address = (dataos.target)
+        response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
+        location_data = {
+            "ip": ip_address,
+            "city": response.get("city"),
+            "region": response.get("region"),
+            "country": response.get("country_name")
+        }
+        for key, value in location_data.items():
+            print(key, ':', value)
+
+
+    get_location()
     print('\n\n')
     for i in tqdm(range(10), 'Scanning success', colour='green'):
         time.sleep(.1)
@@ -83,6 +98,23 @@ elif dataos.os=='Linux':
             g = (f'{port}           open           {serv}              {ver}')
             print(g)
             Output.gdata(g)
+
+
+    def get_location():
+        ip_address = (dataos.target)
+        response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
+        location_data = {
+            "ip": ip_address,
+            "city": response.get("city"),
+            "region": response.get("region"),
+            "country": response.get("country_name")
+        }
+        print('\n\n')
+        for key, value in location_data.items():
+            print(key, ':', value)
+
+
+    get_location()
     print('\n\n')
     for i in tqdm(range(10),'Scanning success',colour='green'):
         time.sleep(.1)
