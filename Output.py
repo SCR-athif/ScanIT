@@ -41,3 +41,12 @@ def fdata(a,b):
 def total(a):
     with open("history.txt","a") as m:
         m.write(f'\n{a} is up\n')
+def cdata(a):
+    with open("history.txt","a") as m:
+        m.write(f"\n{a}\n")
+def adata(a):
+    with open("history.txt","a") as m:
+        m.write(f"\n{a}\n")
+def gdata(a):
+    with open("history.txt","a") as m:
+        m.write(f"\n{a}\n")
