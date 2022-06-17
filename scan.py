@@ -230,11 +230,6 @@ def sbs(IP):
         g=(f'{port}           open           {serv}              {ver}')
         print(g)
         Output.bdata(g)
-        for i in tqdm(range(10)):
-            time.sleep(.01)
-        t2 = datetime.now()
-        total = t2 - t1
-        print("Scanning completed in: ", total)
 
 
 def rbs(IP):
@@ -258,11 +253,7 @@ def rbs(IP):
                 g = (f'{port}           open           {serv}              {ver}')
                 print(g)
                 Output.bdata(g)
-        for i in tqdm(range(10)):
-            time.sleep(.01)
-        t2 = datetime.now()
-        total = t2 - t1
-        print("Scanning completed in: ", total)
+            
     except TimeoutError:
         print("Timeout retry")
 
