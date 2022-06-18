@@ -5,4 +5,4 @@ builtwith #for technology
 scapy #scappy
 tqdm #process bar
 requests 
-whois
+
