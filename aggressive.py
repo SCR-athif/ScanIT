@@ -63,10 +63,6 @@ elif aggos.os=='Linux':
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     p = colored('+', 'red')
     IP = aggos.target
     Output.newline()
