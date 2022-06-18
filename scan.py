@@ -23,10 +23,6 @@ def portscan():
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     print("Choose option: \n\n 1. Specific Port Scan\n\n 2. Specific Port Range Scan\n\n 3. Fulll port Scan (Take more time)")
     a=int(input("\n\nEnter here: "))
     if a==1:
@@ -138,10 +134,6 @@ def Total():
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     t1 = datetime.now()
     #Full Host Scan 
     def fscan():
@@ -246,10 +238,6 @@ def version():
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     print("Choose option: \n\n 1. Version scanning with range entry \n\n 2. Version Scanning with single entry \n\n 3. Version with full port scan (Take more time to complete scan)")
     a=int(input("\nEnter your option: "))
     IP = input("\nEnter Victims IP: ")
@@ -344,7 +332,7 @@ def sudo():
 def agg():
     system('sudo ./aggos.py')
 
-#Runs Aggressive Scan In sudo Previlage
+#Runs datagathering Scan In sudo Previlage
 def data():
     system('sudo ./dataos.py')
 
@@ -359,10 +347,6 @@ def cve_scan():
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     IP = str(input("\n\nEnter the Ip you want to scan for cves:  "))
     nm = map.nmap.PortScanner()
     result = nm.scan(hosts=IP, arguments='-p 1-1000 -Pn  -sV --script vuln')
@@ -388,10 +372,6 @@ def scriptscan():
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     IP=str(input("\n\nEnter the IP for script scan:  "))
     nm = map.nmap.PortScanner()
     p=colored("+","green")
@@ -416,10 +396,6 @@ def webscan():
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     print("Choose option: \n\n 1. Website Techology Scan \n\n 2. Website Whois Lookup")
     a = int(input("\nEnter here: "))
     if (a==1):
