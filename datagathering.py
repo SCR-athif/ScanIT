@@ -28,7 +28,7 @@ def func(oper):
     Output.newline()
     Output.adata(dataos.os)
     print("\n\nport        status         service           version")
-    for port in range(440, 446):
+    for port in range(1, 1024):
         s = socket.socket()
         s.settimeout(5)
         if s.connect_ex((IP, int(port))):
