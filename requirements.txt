@@ -3,5 +3,5 @@ termcolor #coloring
 builtwith #for technology
 scapy #scappy
 tqdm #process bar
-requests 
+requests #geolocation Request
 
