@@ -3,9 +3,10 @@ import time
 import pyfiglet
 import datetime
 import scan
+from os import system
 from termcolor import colored
 
-
+system('clear')
 print('-'*60)
 scanit = colored(pyfiglet.figlet_format("S c a n I T"), 'cyan')
 for i in scanit:
