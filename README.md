@@ -8,10 +8,10 @@ data with minimum time and in an efficient manner
 # Installation steps:-
 1. chmod +x main.py scan.py Output.py osscanning.py dataos.py aggos.py datagathering.py aggressive.py
 2. pip install -r requirements.txt
-3. 'sudo mv /usr/local/lib/python3.10/dist-packages/whois /usr/local/lib/python3.10/dist-packages/wlookup'
+3. 'sudo mv wlookip /usr/local/lib/python3.10/dist-packages/wlookup'
 
-*Any error like file not found, no directory happenes change the paths which showed in pip installation except whois and wlookup*
-*If you changed the path you have to change the path of next command also*
+*Before moving check the path and verify there is python3.10 is available*
+*If not change it into your python version*
 
 4. 'sudo mv map /usr/local/lib/python3.10/dist-packages/map'
 5. pip3 install --upgrade pyfiglet
