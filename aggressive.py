@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+#importing modules
 import socket
 import map
 import time
