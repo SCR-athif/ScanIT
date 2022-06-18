@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+#importing module
 import socket
 import map
 import time
@@ -11,6 +13,7 @@ from tqdm import tqdm
 from os import system
 from termcolor import colored
 
+#if os is windows ruun this part
 if dataos.os=='Windows':
     system('clear')
     print("-" * 60)
@@ -19,10 +22,6 @@ if dataos.os=='Windows':
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     p=colored('+','red')
     t1 = datetime.now
     IP = dataos.target
@@ -53,7 +52,7 @@ if dataos.os=='Windows':
         Output.cdata(i)
         print('\n', p, i)
 
-
+#code for get location of IP
     def get_location():
         ip_address = (dataos.target)
         response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
@@ -66,14 +65,14 @@ if dataos.os=='Windows':
         for key, value in location_data.items():
             print(key, ':', value)
 
-
+#code for get location of IP
     get_location()
     print('\n\n')
     for i in tqdm(range(10), 'Scanning success', colour='green'):
         time.sleep(.1)
 
     exit()
-
+#if os is linux Runs this part
 elif dataos.os=='Linux':
 
     system('clear')
@@ -83,10 +82,6 @@ elif dataos.os=='Linux':
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    date = datetime.datetime.now()
-    print("date", date.date())
-    print("time", date.time())
-    print('-' * 60, "\n")
     p = colored('+', 'red')
     IP = dataos.target
     print('\n\n',p,'OS : Linux')
@@ -107,7 +102,7 @@ elif dataos.os=='Linux':
             print(g)
             Output.gdata(g)
 
-
+#code for get location of IP
     def get_location():
         ip_address = (dataos.target)
         response = requests.get(f'https://ipapi.co/{ip_address}/json/').json()
@@ -121,7 +116,7 @@ elif dataos.os=='Linux':
         for key, value in location_data.items():
             print(key, ':', value)
 
-
+#code for get location of IP
     get_location()
     print('\n\n')
     for i in tqdm(range(10),'Scanning success',colour='green'):
