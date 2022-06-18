@@ -255,7 +255,7 @@ def version():
     print("Scanning completed in: ", total)
 
 #Version Checking For specific Port
-def sbs(IP)
+def sbs(IP):
     s = socket.socket()
     s.settimeout(2)
     host = IP
