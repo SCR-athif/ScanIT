@@ -1,12 +1,16 @@
 #!/usr/bin/python3
+
+#module import
 import time
 import pyfiglet
 import datetime
 import scan
 from os import system
 from termcolor import colored
+ 
 
-system('clear')
+# Title Portion
+system('clear')	#clears the screen
 print('-'*60)
 scanit = colored(pyfiglet.figlet_format("S c a n I T"), 'cyan')
 for i in scanit:
@@ -19,6 +23,8 @@ print("date", date.date())
 print("time", date.time())
 print('-'*60, "\n")
 
+
+#options of Choosing scan method
 a="""
 Choose option:
     1. Simple Port Scan
