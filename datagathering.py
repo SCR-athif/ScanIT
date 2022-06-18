@@ -19,6 +19,10 @@ if dataos.os=='Windows':
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
+    date = datetime.datetime.now()
+    print("date", date.date())
+    print("time", date.time())
+    print('-' * 60, "\n")
     p=colored('+','red')
     t1 = datetime.now
     IP = dataos.target
@@ -79,6 +83,10 @@ elif dataos.os=='Linux':
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
+    date = datetime.datetime.now()
+    print("date", date.date())
+    print("time", date.time())
+    print('-' * 60, "\n")
     p = colored('+', 'red')
     IP = dataos.target
     print('\n\n',p,'OS : Linux')
