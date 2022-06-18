@@ -1,7 +1,10 @@
 #!/usr/bin/python3
+#importing Module 
 import Output
 from scapy.layers.inet import IP, ICMP, sr1
 from os import system
+
+#program to find OS in a network
 system('clear')
 os = ''
 target = input("Enter the Ip address or Host: ")
