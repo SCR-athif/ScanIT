@@ -1,4 +1,6 @@
 #!/usr/bin/python3
+
+#importing modules 
 import socket
 import Output
 import builtwith
@@ -11,7 +13,9 @@ from os import system
 from termcolor import colored
 from tqdm import tqdm
 
-def portscan():                                                         #port scan
+
+#Option 1 portscaning
+def portscan():                                                         
     system('clear')
     print("-" * 60)
     txt=colored(pyfiglet.figlet_format("ScanIT", 'banner'), 'red')
@@ -34,7 +38,7 @@ def portscan():                                                         #port sc
     elif a==3:
         fpt()
 
-
+#Range Port scanning
 def rpt():
     IP = input('\nEnter victims IP: ')
     n1 = int(input('starting port: '))
@@ -68,7 +72,7 @@ def rpt():
     except socket.error:
         print("Couldn't connect to server")
 
-
+#Full Port Scan
 def fpt():
     IP = input('\nEnter victims IP: ')
     try:
@@ -94,7 +98,7 @@ def fpt():
     except KeyboardInterrupt:
         print("unwanted input")
 
-
+#Single Port Scanning
 def spt(IP):
     try:
         port=str(input("Enter your port: "))
@@ -125,7 +129,7 @@ def spt(IP):
     except socket.error:
         print("Couldn't connect to server")
 
-
+#Live Host Scanning
 def Total():
     system('clear')
     print("-" * 60)
@@ -139,6 +143,7 @@ def Total():
     print("time", date.time())
     print('-' * 60, "\n")
     t1 = datetime.now()
+    #Full Host Scan 
     def fscan():
         nm = map.nmap.PortScanner()
         IP = input("Enter IP: ")
@@ -157,6 +162,7 @@ def Total():
             for host, status in hosts_list:
                 print(host + ' is ' + status)
                 Output.fdata(host, status)
+    #Host scan with specific port running
     def sscan(addr):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket.setdefaulttimeout(1)
@@ -165,7 +171,7 @@ def Total():
             return 1
         else:
             return 0
-
+    #Host scan with specific set of port running 
     def rscan(addr, aport):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         socket.setdefaulttimeout(.01)
@@ -230,7 +236,8 @@ def Total():
     print("Scanning completed in: ", total)
 
 
-def version():                                                                                      #version scanning
+#Version Scanning
+def version():                                                                                      
     system('clear')
     print("-" * 60)
     txt=colored(pyfiglet.figlet_format("    S c a n I T",'arrows'),'blue')
@@ -259,8 +266,8 @@ def version():                                                                  
     total = t2 - t1
     print("Scanning completed in: ", total)
 
-
-def sbs(IP):
+#Version Checking For specific Port
+def sbs(IP)
     s = socket.socket()
     s.settimeout(2)
     host = IP
@@ -280,6 +287,7 @@ def sbs(IP):
         Output.bdata(g)
 
 
+#Version Checking with Set of Port 
 def rbs(IP):
     host = IP
     n1 = input("Enter starting port: ")
@@ -304,7 +312,7 @@ def rbs(IP):
     except TimeoutError:
         print("Timeout retry")
 
-
+#Version Checking All Port
 def fbs(IP):
     host = IP
     t1 = datetime.now()
@@ -328,19 +336,20 @@ def fbs(IP):
     except TimeoutError:
         print("Timeout retry")
 
-
+#Runs OSscanning With sudo previlage
 def sudo():
     system('sudo ./osscanning.py')
 
-
+#Runs Aggressive Scan With sudo Previlage
 def agg():
     system('sudo ./aggos.py')
 
-
+#Runs Aggressive Scan In sudo Previlage
 def data():
     system('sudo ./dataos.py')
 
 
+#cve Scaning with an IP
 def cve_scan():
     system('clear')
     print("-" * 60)
@@ -369,7 +378,7 @@ def cve_scan():
     total = t2 - t1
     print("Scanning completed in: ", total)
 
-
+#Script scan with an IP
 def scriptscan():
     system('clear')
     print("-" * 60)
@@ -397,8 +406,8 @@ def scriptscan():
     total = t2 - t1
     print("Scanning completed in: ", total)
 
-
-def webscan():                                                                      #webscan
+#WebScan Used to gather website data
+def webscan():                                                                      
     system('clear')
     print("-" * 60)
     txt=colored(pyfiglet.figlet_format("ScanIT", 'banner3'), 'blue')
@@ -424,7 +433,7 @@ def webscan():                                                                  
     total = t2 - t1
     print("Scanning completed in: ", total)
 
-
+#Technology Scan
 def tlook():
     url = (input("Enter URL: "))
     a = builtwith.parse(url)
@@ -434,6 +443,7 @@ def tlook():
         print(key, ":", ", ".join(value))
 
 
+#Whois Lookup
 def wlook():
     host = input("Enter a host: ")
     a=wlookup.whois(host)
