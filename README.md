@@ -8,7 +8,7 @@ data with minimum time and in an efficient manner
 # Installation steps:-
 1. chmod +x main.py scan.py Output.py osscanning.py dataos.py aggos.py datagathering.py aggressive.py
 2. pip install -r requirements.txt
-3. 'sudo mv wlookip /usr/local/lib/python3.10/dist-packages/wlookup'
+3. 'sudo mv wlookup /usr/local/lib/python3.10/dist-packages/wlookup'
 
 *Before moving check the path and verify there is python3.10 is available*
 *If not change it into your python version*
