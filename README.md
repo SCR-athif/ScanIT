@@ -6,7 +6,7 @@ to scan open ports, technology used in a website, whois lookup and other network
 data with minimum time and in an efficient manner
 
 # Installation steps:-
-1. chmod +x main.py scan.py Output.py osscanning.py dataos.py aggos.py datagathering.py aggressive.py
+1. sudo chmod +x main.py scan.py Output.py osscanning.py dataos.py aggos.py datagathering.py aggressive.py
 2. pip install -r requirements.txt
 3. 'sudo mv wlookup /usr/local/lib/python3.10/dist-packages/wlookup'
 
@@ -15,7 +15,11 @@ data with minimum time and in an efficient manner
 
 4. 'sudo mv map /usr/local/lib/python3.10/dist-packages/map'
 5. pip3 install --upgrade pyfiglet
-6. python3 main.py or ./main.py
+
+## To run the program :
+  we have two method to run this program 
+  1. python3 main.py
+  2. ./main.py
 ## Adddtional
 
 You can read scanned data from history text file, all kind of **scan result** will be recoded in there.
