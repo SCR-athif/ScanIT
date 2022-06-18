@@ -10,7 +10,7 @@ import aggos
 import Output
 from datetime import datetime
 
-
+#if os is windows run this part
 if aggos    .os=='Windows':
     system('clear')
     print("-" * 60)
@@ -53,7 +53,7 @@ if aggos    .os=='Windows':
     for i in tqdm(range(10), 'Scanning success', colour='green'):
         time.sleep(.1)
     exit()
-
+#if os is windows run this part
 elif aggos.os=='Linux':
 
     system('clear')
