@@ -425,5 +425,5 @@ def wlook():
     host = input("Enter a host: ")
     a=wlookup.whois(host)
     Output.wldata(a)
-    print(a)
+    print('\n',a)
 
