@@ -414,6 +414,7 @@ def tlook():
     url = (input("Enter URL: "))
     a = builtwith.parse(url)
     Output.newline()
+    print('\n\n')
     for key, value in a.items():
         Output.tdata(key, value)
         print(key, ":", ", ".join(value))
