@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+#functions to save scanning data into a txt file
 def ptopen(IP, port,ser):
     with open("history.txt", "a") as m:
         m.write("\n{} {} {} {} {} {}\n".format(IP, ':port', port, 'is open',":",ser))
