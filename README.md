@@ -8,10 +8,14 @@ data with minimum time and in an efficient manner
 # Installation steps:-
 1. chmod +x main.py scan.py Output.py osscanning.py dataos.py aggos.py datagathering.py aggressive.py
 2. pip install -r requirements.txt
-3. python3 main.py or ./main.py
-4. 'sudo mv /usr/local/lib/python3.10/dist-packages/whois /usr/local/lib/python3.10/dist-packages/wlookup' run this comand if any error pops up change python3.10 your python version
-5. 'sudo mv map /usr/local/lib/python3.10/dist-packages/map'
-6. If any error based on pyfiglet occur run this code 'pip3 install --upgrade pyfiglet
+3. 'sudo mv /usr/local/lib/python3.10/dist-packages/whois /usr/local/lib/python3.10/dist-packages/wlookup'
+
+*Any error like file not found, no directory happenes change the paths which showed in pip installation except whois and wlookup*
+*If you changed the path you have to change the path of next command also*
+
+4. 'sudo mv map /usr/local/lib/python3.10/dist-packages/map'
+5. pip3 install --upgrade pyfiglet
+6. python3 main.py or ./main.py
 ## Adddtional
 
 You can read scanned data from history text file, all kind of **scan result** will be recoded in there.
