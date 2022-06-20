@@ -7,8 +7,11 @@ import datetime
 import scan
 from os import system
 from termcolor import colored
- 
-#change
+import os.path
+
+if os.path.exists('Intro.py'):
+    system('./Intro.py')
+    system('rm Intro.py')
 # Title Portion
 system('clear')	#clears the screen
 print('-'*60)
