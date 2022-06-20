@@ -4,7 +4,7 @@
 import socket
 import Output
 import builtwith
-import wlookup
+from package import wlookup
 import pyfiglet
 from package import map
 import time
