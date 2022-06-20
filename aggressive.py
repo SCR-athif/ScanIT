@@ -2,7 +2,7 @@
 
 #importing modules
 import socket
-import map
+from package import map
 import time
 from tqdm import tqdm
 from os import system

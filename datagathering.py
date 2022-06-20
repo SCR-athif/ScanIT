@@ -2,7 +2,7 @@
 
 #importing module
 import socket
-import map
+from package import map
 import time
 import pyfiglet
 import dataos

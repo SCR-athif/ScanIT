@@ -6,7 +6,7 @@ import Output
 import builtwith
 import wlookup
 import pyfiglet
-import map
+from package import map
 import time
 from datetime import datetime
 from os import system
@@ -26,7 +26,7 @@ def portscan():
     print("Choose option: \n\n 1. Specific Port Scan\n\n 2. Specific Port Range Scan\n\n 3. Fulll port Scan (Take more time)")
     a=int(input("\n\nEnter here: "))
     if a==1:
-        IP = input('\nEnter victims IP: ')
+        IP = input('\nEnter victims IP (eg: - 192.168.1.1): ')
         Output.newline()
         spt(IP)
     elif a==2:
@@ -36,9 +36,9 @@ def portscan():
 
 #Range Port scanning
 def rpt():
-    IP = input('\nEnter victims IP: ')
-    n1 = int(input('starting port: '))
-    n2 = int(input('Ending port: '))
+    IP = input('\nEnter victims IP (eg: - 192.168.1.1): ')
+    n1 = int(input('starting port (eg:- 22): '))
+    n2 = int(input('Ending port (eg: - 100): '))
     try:
         Output.newline()
         print('port     Status       service')
@@ -57,7 +57,7 @@ def rpt():
             time.sleep(.01)
         t2 = datetime.now()
         total = t2 - t1
-        print("Scanning completed in: ", total)
+        print("Scanning completed in (eg: - 192.168.1.1): ", total)
 
     except KeyboardInterrupt:
         print("unwanted input")
@@ -70,7 +70,7 @@ def rpt():
 
 #Full Port Scan
 def fpt():
-    IP = input('\nEnter victims IP: ')
+    IP = input('\nEnter victims IP (eg: - 192.168.1.1): ')
     try:
         Output.newline()
         print('port     Status       service')
@@ -97,7 +97,7 @@ def fpt():
 #Single Port Scanning
 def spt(IP):
     try:
-        port=str(input("Enter your port: "))
+        port=str(input("Enter your port (eg: - 22): "))
         s= socket.socket(socket.AF_INET,socket.SOCK_STREAM)
         s.settimeout(2)
         t1=datetime.now()
@@ -138,7 +138,7 @@ def Total():
     #Full Host Scan 
     def fscan():
         nm = map.nmap.PortScanner()
-        IP = input("Enter IP: ")
+        IP = input("Enter IP (eg: - 192.168.1.1): ")
 
         if '/24' in IP:
             nm.scan(hosts=IP, arguments='-n -sP')
@@ -192,7 +192,7 @@ def Total():
         elif a==2:
             entry()
             global port
-            port = input("Enter port number :")
+            port = input("Enter port number (eg: - 22):")
             Output.newline()
             for ip in range(st1, en1):
                 addr = net2 + str(ip)
@@ -201,8 +201,8 @@ def Total():
                     print(addr, "is up")
         elif a==3:
             entry()
-            n1 = input("Enter starting range:")
-            n2 = input("Enter ending range:")
+            n1 = input("Enter starting range (eg: - 1):")
+            n2 = input("Enter ending range (eg: - 255):")
             Output.newline()
             for ip in range(st1, en1):
                 addr = net2 + str(ip)
@@ -212,12 +212,12 @@ def Total():
                         print(addr, "is up")
     def entry():
         global net, net1, l, net2, st1, en1, n1, n2
-        net = input("Enter the IP address: ")
+        net = input("Enter the IP address (eg: - 192.168.1.1): ")
         net1 = net.split('.')
         l = '.'
         net2 = net1[0] +  l+ net1[1] + l + net1[2] + l
-        st1 = int(input("Starting host: "))
-        en1 = int(input("Enting host: "))
+        st1 = int(input("Starting host (eg: - 1): "))
+        en1 = int(input("Enting host (eg: - 255): "))
         en1 = en1 + 1
     run1()
     print('\n\n')
@@ -240,7 +240,7 @@ def version():
     print("-" * 60)
     print("Choose option: \n\n 1. Version scanning with range entry \n\n 2. Version Scanning with single entry \n\n 3. Version with full port scan (Take more time to complete scan)")
     a=int(input("\nEnter your option: "))
-    IP = input("\nEnter Victims IP: ")
+    IP = input("\nEnter Victims IP (eg: - 192.168.1.1): ")
     if (a==2):
         sbs(IP)
     elif (a==1):
@@ -278,8 +278,8 @@ def sbs(IP):
 #Version Checking with Set of Port 
 def rbs(IP):
     host = IP
-    n1 = input("Enter starting port: ")
-    n2 = input("Enter Ending port: ")
+    n1 = input("Enter starting port (eg: - 22): ")
+    n2 = input("Enter Ending port (eg: - 100): ")
     t1=datetime.now()
     print("\n\nport        status         service           version")
     Output.newline()
@@ -347,7 +347,7 @@ def cve_scan():
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    IP = str(input("\n\nEnter the Ip you want to scan for cves:  "))
+    IP = str(input("\n\nEnter the Ip you want to scan for cves (eg: - 192.168.1.1):  "))
     nm = map.nmap.PortScanner()
     result = nm.scan(hosts=IP, arguments='-p 1-1000 -Pn  -sV --script vuln')
     p=colored('+','red')
@@ -372,7 +372,7 @@ def scriptscan():
         print(i, end='')
         time.sleep(.001)
     print("-" * 60)
-    IP=str(input("\n\nEnter the IP for script scan:  "))
+    IP=str(input("\n\nEnter the IP for script scan (eg: - 192.168.1.1):  "))
     nm = map.nmap.PortScanner()
     p=colored("+","green")
     result = nm.scan(hosts=IP, arguments='-p 1-1024 -sC')
@@ -411,7 +411,7 @@ def webscan():
 
 #Technology Scan
 def tlook():
-    url = (input("Enter URL: "))
+    url = (input("Enter URL (eg: - http://google.com): "))
     a = builtwith.parse(url)
     Output.newline()
     print('\n\n')
@@ -422,7 +422,7 @@ def tlook():
 
 #Whois Lookup
 def wlook():
-    host = input("Enter a host: ")
+    host = input("Enter a host (eg: - google.com): ")
     a=wlookup.whois(host)
     Output.wldata(a)
     print('\n',a)
