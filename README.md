@@ -8,13 +8,7 @@ data with minimum time and in an efficient manner
 # Installation steps:-
 1. sudo chmod +x main.py scan.py Output.py osscanning.py dataos.py aggos.py datagathering.py aggressive.py
 2. pip install -r requirements.txt
-3. 'sudo mv wlookup /usr/local/lib/python3.10/dist-packages/wlookup'
-
-*Before moving check the path and verify there is python3.10 is available*
-*If not change it into your python version*
-
-4. 'sudo mv map /usr/local/lib/python3.10/dist-packages/map'
-5. pip3 install --upgrade pyfiglet
+3. pip3 install --upgrade pyfiglet
 
 ## To run the program :
   we have two method to run this program 
