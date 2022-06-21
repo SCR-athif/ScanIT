@@ -6,7 +6,7 @@ to scan open ports, technology used in a website, whois lookup and other network
 data with minimum time and in an efficient manner
 
 # Installation steps:-
-1. sudo chmod +x main.py scan.py Output.py osscanning.py dataos.py aggos.py datagathering.py aggressive.py
+1. sudo chmod +x main.py scan.py Output.py osscanning.py dataos.py aggos.py datagathering.py aggressive.py Intro.py
 2. pip install -r requirements.txt
 3. pip3 install --upgrade pyfiglet
 
