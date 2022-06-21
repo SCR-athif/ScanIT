@@ -1,12 +1,20 @@
 #!/usr/bin/python3
 import argparse, socket, time, json, datetime, platform, psutil, requests, pprint, uuid
+import os
 
+from matplotlib import pyplot as plt
+from matplotlib.animation import FuncAnimation
+from os import system,name
+if name=='nt':
+    system('cls')
+else:
+    system('clear')
 # parse args
 parser = argparse.ArgumentParser(description='Monitoring script to send system info to a tracking server')
-parser.add_argument('-d', '--dest', default='http://127.0.0.1:8080/', help='API Endpoint for Monitoring Data (Defaults to http://localhost:8080/)')
+parser.add_argument('-d', '--dest', default='http://127.0.0.1', help='API Endpoint for Monitoring Data (Defaults to http://localhost:8080/)')
 parser.add_argument('-i', '--interval', default=5, type=int, help='Interval between checks (Seconds. Defaults to 5 seconds)')
 parser.add_argument('-a', '--attempts', default=30, type=int, help='Attempts to send data when sending failes (Defaults to 30)')
-parser.add_argument('-t', '--timeout', default=60, type=int, help='Timeout between resend attempts (Seconds. Defaults to 60. If attempts is reached script will die)')
+parser.add_argument('-t', '--timeout', default=5, type=int, help='Timeout between resend attempts (Seconds. Defaults to 60. If attempts is reached script will die)')
 args = parser.parse_args()
 
 # Factor in sleep for bandwidth checking
@@ -163,10 +171,10 @@ def send_data(data):
             endpoint = args.dest
             response = requests.post(url = endpoint, data = data)
             print("\nPOST:")
-            print("Response:", response.status_code)
-            print("Headers:")
+            print("\n\tResponse:", response.status_code)
+            print("\n\tHeaders:")
             pprint.pprint(response.headers)
-            print("Content:", response.content)
+            print("\n\tContent:", response.content)
             # Attempt printing response in JSON if possible
             try:
                 print("JSON Content:")
@@ -175,13 +183,40 @@ def send_data(data):
                 print("No JSON content")
             break
         except requests.exceptions.RequestException as e:
-            print("\nPOST Error:\n",e)
+            print("\n Completed ....\n",e)
             # Sleep 1 minute before retrying
-            time.sleep(args.timeout)
+            exit()
     else:
         # If no connection established for attempts*timeout, kill script
         exit(0)
 
+
 main()
-print("-"*100)
+#graph
+try:
+    frame_len = 200
+    y = []
+    fig = plt.figure(figsize=(6,2))
+
+
+    def animation(i):
+        y.append(psutil.cpu_percent())
+        if len(y) <= frame_len:
+            plt.cla()
+            plt.plot(y, 'r', label='CPU usage(%)')
+        else:
+            plt.cla()
+            plt.plot(y[-frame_len:], 'r', label='cpu usage(%)')
+        plt.xlabel('Time (s)')
+        plt.ylabel('CPU usage(%)')
+        plt.title("REAL-TIME CPU Usage in percentage")
+        plt.legend(loc='upper right')
+
+
+    animate = FuncAnimation(plt.gcf(), animation, interval=1000)
+    plt.show()
+except KeyboardInterrupt:
+    print("Ctrl + C Entered. Exiting....")
+
+print("-"*200)
 time.sleep(args.interval)
