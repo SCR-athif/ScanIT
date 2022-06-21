@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/ScanIT.iml" filepath="$PROJECT_DIR$/.idea/ScanIT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../Server-Monitoring-Script/.idea/Server-Monitoring-Script.iml" filepath="$PROJECT_DIR$/../Server-Monitoring-Script/.idea/Server-Monitoring-Script.iml" />
     </modules>
   </component>
 </project>
