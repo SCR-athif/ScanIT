@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import argparse, socket, time, json, datetime, platform, psutil, requests, pprint, uuid
-from os import system,name
 from tqdm import tqdm
 from os import system,name
 
