@@ -7,3 +7,4 @@ requests #geolocation Request
 future #for wlookup
 matplotlib
 numpy
+psutil #monitoring
