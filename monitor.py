@@ -2,6 +2,7 @@
 import argparse, socket, time, json, datetime, platform, psutil, requests, pprint, uuid
 from os import system,name
 from tqdm import tqdm
+from os import system,name
 
 if name=='nt':
     system('cls')
@@ -182,6 +183,7 @@ def send_data(data):
             break
         except requests.exceptions.RequestException as e:
             print("\n POST ERROR (Use -d <API URL> ):\n",e)
+            print("\n Completed ....\n",e)
             # Sleep 1 minute before retrying
             exit()
     else:
@@ -190,9 +192,10 @@ def send_data(data):
 
 
 main()
+
 for i in tqdm(range(10), 'Data Gathering completed', colour='green'):
     time.sleep(.1)
 
 system('./gcpu.py & ./gnet.py')
-
+print("-"*200)
 time.sleep(args.interval)
