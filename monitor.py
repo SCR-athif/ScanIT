@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 import argparse, socket, time, json, datetime, platform, psutil, requests, pprint, uuid
-from os import system,name
 from tqdm import tqdm
 from os import system,name
+
 
 if name=='nt':
     system('cls')
@@ -173,7 +173,6 @@ def send_data(data):
             print("\n\tResponse:", response.status_code)
             print("\n\tHeaders:")
             pprint.pprint(response.headers)
-            print("\n\tContent:", response.content)
             # Attempt printing response in JSON if possible
             try:
                 print("JSON Content:")

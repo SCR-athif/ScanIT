@@ -39,6 +39,7 @@ Choose option:
     7. CVE scan
     8. Script Scan
     9. Web Scan
+    10. Dos Attack
 """
 
 print(a)
@@ -62,6 +63,8 @@ try:
 	    scan.scriptscan()
     elif a==9:
         scan.webscan()
+    elif a==10:
+        scan.dos()
     else:
         print("Wrong Entry")
 
