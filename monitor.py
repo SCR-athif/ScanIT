@@ -1,10 +1,9 @@
 #!/usr/bin/python3
 import argparse, socket, time, json, datetime, platform, psutil, requests, pprint, uuid
-import os
-
-from matplotlib import pyplot as plt
-from matplotlib.animation import FuncAnimation
 from os import system,name
+from tqdm import tqdm
+from os import system,name
+
 if name=='nt':
     system('cls')
 else:
@@ -183,6 +182,7 @@ def send_data(data):
                 print("No JSON content")
             break
         except requests.exceptions.RequestException as e:
+            print("\n POST ERROR (Use -d <API URL> ):\n",e)
             print("\n Completed ....\n",e)
             # Sleep 1 minute before retrying
             exit()
@@ -192,31 +192,10 @@ def send_data(data):
 
 
 main()
-#graph
-try:
-    frame_len = 200
-    y = []
-    fig = plt.figure(figsize=(6,2))
 
+for i in tqdm(range(10), 'Data Gathering completed', colour='green'):
+    time.sleep(.1)
 
-    def animation(i):
-        y.append(psutil.cpu_percent())
-        if len(y) <= frame_len:
-            plt.cla()
-            plt.plot(y, 'r', label='CPU usage(%)')
-        else:
-            plt.cla()
-            plt.plot(y[-frame_len:], 'r', label='cpu usage(%)')
-        plt.xlabel('Time (s)')
-        plt.ylabel('CPU usage(%)')
-        plt.title("REAL-TIME CPU Usage in percentage")
-        plt.legend(loc='upper right')
-
-
-    animate = FuncAnimation(plt.gcf(), animation, interval=1000)
-    plt.show()
-except KeyboardInterrupt:
-    print("Ctrl + C Entered. Exiting....")
-
+system('./gcpu.py & ./gnet.py')
 print("-"*200)
 time.sleep(args.interval)
