@@ -173,7 +173,6 @@ def send_data(data):
             print("\n\tResponse:", response.status_code)
             print("\n\tHeaders:")
             pprint.pprint(response.headers)
-            print("\n\tContent:", response.content)
             # Attempt printing response in JSON if possible
             try:
                 print("JSON Content:")
