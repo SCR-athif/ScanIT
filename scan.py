@@ -426,6 +426,8 @@ def wlook():
     a=wlookup.whois(host)
     Output.wldata(a)
     print('\n',a)
+    
+#dos attack
 attack_num = 0
 def dos():
     system('clear')
