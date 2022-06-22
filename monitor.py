@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 import argparse, socket, time, json, datetime, platform, psutil, requests, pprint, uuid
-import os
-
 from matplotlib import pyplot as plt
 from matplotlib.animation import FuncAnimation
 from os import system,name
+from tqdm import tqdm
+
 if name=='nt':
     system('cls')
 else:
@@ -183,7 +183,7 @@ def send_data(data):
                 print("No JSON content")
             break
         except requests.exceptions.RequestException as e:
-            print("\n Completed ....\n",e)
+            print("\n POST ERROR (Use -d <API URL> ):\n",e)
             # Sleep 1 minute before retrying
             exit()
     else:
@@ -192,6 +192,8 @@ def send_data(data):
 
 
 main()
+for i in tqdm(range(10), 'Data Gathering completed', colour='green'):
+    time.sleep(.1)
 #graph
 try:
     frame_len = 200
@@ -218,5 +220,5 @@ try:
 except KeyboardInterrupt:
     print("Ctrl + C Entered. Exiting....")
 
-print("-"*200)
+
 time.sleep(args.interval)
