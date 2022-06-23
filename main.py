@@ -4,7 +4,6 @@
 import time
 import pyfiglet
 import datetime
-import scan
 from os import system
 from termcolor import colored
 import os.path
@@ -30,41 +29,20 @@ print('-'*60, "\n")
 #options of Choosing scan method
 a="""
 Choose option:
-    1. Simple Port Scan
-    2. Live host hunt
-    3. Version Scan
-    4. OS Detection Scan
-    5. Aggressive Scanning
-    6. Host Max Data Gathering
-    7. CVE scan
-    8. Script Scan
-    9. Web Scan
-    10. Dos Attack
+    1. Reconnaissance
+    2. Scan
+    3. Gain Access
 """
 
 print(a)
 try:
     a = int(input("Enter here: "))
     if a==1:
-        scan.portscan()
+        pass
     elif a==2:
-        scan.Total()
+        system('./scanning/main.py')
     elif a==3:
-        scan.version()
-    elif a==4:
-        scan.sudo()
-    elif a==5:
-        scan.agg()
-    elif a==6:
-        scan.data()
-    elif a==7:
-        scan.cve_scan()
-    elif a==8:
-	    scan.scriptscan()
-    elif a==9:
-        scan.webscan()
-    elif a==10:
-        scan.dos()
+        system('./Attacking/main.py')
     else:
         print("Wrong Entry")
 
