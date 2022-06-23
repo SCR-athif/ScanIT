@@ -139,7 +139,7 @@ def Total():
     def fscan():
         nm = map.nmap.PortScanner()
         IP = input("Enter IP (eg: - 192.168.1.1): ")
-
+        print('\nScanning Intiated\n','-'*50,'\n')
         if '/24' in IP:
             nm.scan(hosts=IP, arguments='-n -sP')
             hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
@@ -456,8 +456,11 @@ def dos():
             print('Attack', attack_num)
             s.close()
         except:
-            print('Enter a valid IP')
-    Output.dosdata(target,att)
+            error = colored('\nError (check IP address or Port Number) \n\n','red')
+            print(error)
+            dos()
+    Output.newline()
+    Output.dosdata(target, att)
     for i in range(att):
         attack()
 
