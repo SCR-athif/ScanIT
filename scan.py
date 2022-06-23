@@ -433,7 +433,6 @@ def dos():
     system('clear')
     print("-" * 60)
     txt=colored(pyfiglet.figlet_format("ScanIT", 'banner3'), 'blue')
-    t1=datetime.now()
     for i in txt:
         print(i, end='')
         time.sleep(.001)
@@ -463,4 +462,6 @@ def dos():
     Output.dosdata(target, att)
     for i in range(att):
         attack()
+    for i in tqdm(range(10), 'Attacking Successfully completed', colour='green'):
+        time.sleep(.1)
 
