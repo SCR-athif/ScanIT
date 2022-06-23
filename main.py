@@ -38,7 +38,7 @@ print(a)
 try:
     a = int(input("Enter here: "))
     if a==1:
-        pass
+        system('./recon/main.py')
     elif a==2:
         system('./scanning/main.py')
     elif a==3:

@@ -4,7 +4,7 @@
 import time
 import pyfiglet
 import datetime
-import scan
+import gather
 from os import system
 from termcolor import colored
 
@@ -27,16 +27,16 @@ print('-'*60, "\n")
 a="""
 Choose option:
     1. Web Scan
-    2. Datagathering
+    2. Data-gathering
 """
 
 print(a)
 try:
     a = int(input("Enter here: "))
     if a==1:
-        scan.portscan()
+        gather.webscan()
     elif a==2:
-        gather.()
+        system('sudo ./recon/dataos.py')
     else:
         print("Wrong Entry")
 

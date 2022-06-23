@@ -6,7 +6,6 @@ import Output
 import builtwith
 from package import wlookup
 import pyfiglet
-from package import map
 import time
 from datetime import datetime
 from os import system
