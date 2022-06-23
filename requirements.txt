@@ -5,7 +5,7 @@ scapy #scappy
 tqdm #process bar
 requests #geolocation Request
 future #for wlookup
-matplotlib
-numpy
+matplotlib #graph
+numpy #numerical in graph
 psutil #monitoring
 
