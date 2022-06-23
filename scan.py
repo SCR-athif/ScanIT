@@ -457,7 +457,7 @@ def dos():
             s.close()
         except:
             print('Enter a valid IP')
-
+    Output.dosdata(target,att)
     for i in range(att):
         attack()
 

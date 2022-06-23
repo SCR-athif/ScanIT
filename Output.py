@@ -51,3 +51,6 @@ def adata(a):
 def gdata(a):
     with open("history.txt","a") as m:
         m.write(f"\n{a}\n")
+def dosdata(a,b):
+    with open("history.txt","a") as m:
+        m.write(f"\nDos Attack into {a} for {b} times\n")
