@@ -194,6 +194,7 @@ main()
 
 for i in tqdm(range(10), 'Data Gathering completed', colour='green'):
     time.sleep(.1)
+   
 if name=='nt':
     system('python gnet.py &  gcpu.py')
 else:
