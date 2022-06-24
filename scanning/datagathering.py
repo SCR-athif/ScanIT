@@ -77,7 +77,9 @@ try:
         print('\n\n')
         for i in tqdm(range(10), 'Scanning success', colour='green'):
             time.sleep(.1)
-        exit()
+        back = input("Do you want scan again (y/n): ")
+        if back == 'y' or back == 'Y':
+            system('./scanning/main.py')
 
     # if os is linux Runs this part
     elif dataos.os == 'Linux':

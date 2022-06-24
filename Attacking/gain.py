@@ -52,5 +52,42 @@ try:
             attack()
         for i in tqdm(range(10), 'Attacking Successfully completed', colour='green'):
             time.sleep(.1)
+        back = input("Do you want scan again (y/n): ")
+        if back == 'y' or back == 'Y':
+            system('./Attacking/main.py')
+    def server():
+        system('clear')
+        print("-" * 60)
+        txt = colored(pyfiglet.figlet_format("ScanIT", 'banner3'), 'blue')
+        for i in txt:
+            print(i, end='')
+            time.sleep(.001)
+        print("-" * 60)
+        print('\n')
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.connect(('8.8.8.8',53))
+        ip=s.getsockname()[0]
+        s.close()
+        print(f' copy and paste this link \n \n http://{ip}/Attacking \n\n\n')
+        system('python -m http.server 80')
+
+        back = input("\n Do you want scan again (y/n): ")
+        if back == 'y' or back == 'Y':
+            system('./Attacking/main.py')
+    def rdp():
+        system('clear')
+        print("-" * 60)
+        txt = colored(pyfiglet.figlet_format("ScanIT", 'banner3'), 'blue')
+        for i in txt:
+            print(i, end='')
+            time.sleep(.001)
+        print("-" * 60)
+        print('\n')
+        user = input("Enter user name (Eg:- wade): ")
+        ip = input("Enter server ip (Eg:- 192.168.1.1) :")
+        system(f'remmina -c {user}@{ip}')
+        back = input("\n Do you want scan again (y/n): ")
+        if back == 'y' or back == 'Y':
+            system('./Attacking/main.py')
 except:
     print("Unexpected error occured try again")

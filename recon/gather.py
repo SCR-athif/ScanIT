@@ -35,7 +35,9 @@ try:
         t2 = datetime.now()
         total = t2 - t1
         print("Scanning completed in: ", total)
-
+        back = input("Do you want scan again (y/n): ")
+        if back == 'y' or back == 'Y':
+            system('./recon/main.py')
 
     # Technology Scan
     def tlook():

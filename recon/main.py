@@ -28,6 +28,8 @@ a="""
 Choose option:
     1. Web Scan
     2. Data-gathering
+    
+    Enter 0 to main menu
 """
 
 print(a)
@@ -37,6 +39,8 @@ try:
         gather.webscan()
     elif a==2:
         system('sudo ./recon/dataos.py')
+    elif a==0:
+        system('./main.py')
     else:
         print("Wrong Entry")
 

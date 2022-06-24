@@ -28,6 +28,11 @@ a="""
 Choose option:
     1. DOS attack
     2. Eternal Blue
+    3. Host Server
+    4. RDP connection
+    
+    
+    Enter 0 to main menu
 """
 
 print(a)
@@ -38,6 +43,12 @@ try:
     elif a==2:
         ip = input("Enter victim ip (eg:- 192.168.1.1): ")
         system('./Attacking/blue.py '+ip)
+    if a==3:
+        gain.server()
+    if a==4:
+        gain.rdp()
+    elif a==0:
+        system('./main.py')
     else:
         print("Wrong Entry")
 
