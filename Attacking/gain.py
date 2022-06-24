@@ -85,7 +85,7 @@ try:
         print('\n')
         user = input("Enter user name (Eg:- wade): ")
         ip = input("Enter server ip (Eg:- 192.168.1.1) :")
-        system(f'remmina -c {user}@{ip}')
+        system(f'remmina -c rdp://{user}@{ip}')
         back = input("\n Do you want scan again (y/n): ")
         if back == 'y' or back == 'Y':
             system('./Attacking/main.py')
