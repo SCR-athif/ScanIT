@@ -27,3 +27,5 @@ try:
     plt.show()
 except KeyboardInterrupt:
     print("Ctrl + C Entered. Exiting....")
+except:
+    print("Unexpected error occured try again")

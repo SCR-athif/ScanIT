@@ -44,3 +44,5 @@ except KeyboardInterrupt:
     print("unwanted input. Exiting...")
 except TypeError:
     print("Invalid Type   Exiting....")
+except:
+    print("Unexpected error try again")
