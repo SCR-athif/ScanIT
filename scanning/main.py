@@ -35,6 +35,8 @@ Choose option:
     7. CVE scan
     8. Script Scan
     9. Web Scan
+    
+    Enter 0 to Main Menu
 """
 
 print(a)
@@ -61,6 +63,8 @@ try:
 	    scan.scriptscan()
     elif a==9:
         scan.webscan()
+    elif a==0:
+        system('./main.py')
     else:
         print("Wrong Entry")
 

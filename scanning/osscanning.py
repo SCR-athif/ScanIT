@@ -25,6 +25,8 @@ try:
             a = f'\n\n*{os}* Operating System is Detected \n\n'
             Output.osdata(a)
             print(a)
-
+    back = input("Do you want scan again (y/n): ")
+    if back == 'y' or back == 'Y':
+        system('./scanning/main.py')
 except:
     print("Unexpected error occured try again")

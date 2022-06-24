@@ -60,8 +60,10 @@ try:
                 time.sleep(.01)
             t2 = datetime.now()
             total = t2 - t1
-            print("Scanning completed in (eg: - 192.168.1.1): ", total)
-
+            print("Scanning completed in ", total)
+            back = input("Do you want scan again (y/n): ")
+            if back == 'y' or back == 'Y':
+                system('./scanning/main.py')
         except KeyboardInterrupt:
             print("unwanted input")
 
@@ -94,7 +96,9 @@ try:
             t2 = datetime.now()
             total = t2 - t1
             print("Scanning completed in: ", total)
-
+            back = input("Do you want scan again (y/n): ")
+            if back == 'y' or back == 'Y':
+                system('./scanning/main.py')
         except KeyboardInterrupt:
             print("unwanted input")
 
@@ -121,6 +125,9 @@ try:
                 t2 = datetime.now()
                 total = t2 - t1
                 print("Scanning completed in: ", total)
+                back = input("Do you want scan again (y/n): ")
+                if back == 'y' or back == 'Y':
+                    system('./scanning/main.py')
         except KeyboardInterrupt:
             print("unwanted input")
 
@@ -237,7 +244,9 @@ try:
         t2 = datetime.now()
         total = t2 - t1
         print("Scanning completed in: ", total)
-
+        back = input("Do you want scan again (y/n): ")
+        if back=='y' or back=='Y':
+            system('./scanning/main.py')
 
     # Version Scanning
     def version():
@@ -265,7 +274,8 @@ try:
         t2 = datetime.now()
         total = t2 - t1
         print("Scanning completed in: ", total)
-
+        if back=='y' or back=='Y':
+            system('./scanning/main.py')
 
     # Version Checking For specific Port
     def sbs(IP):
@@ -363,7 +373,9 @@ try:
         t2 = datetime.now()
         total = t2 - t1
         print("Scanning completed in: ", total)
-
+        back = input("Do you want scan again (y/n): ")
+        if back=='y' or back=='Y':
+            system('./scanning/main.py')
 
     # Script scan with an IP
     def scriptscan():
@@ -388,7 +400,9 @@ try:
         t2 = datetime.now()
         total = t2 - t1
         print("Scanning completed in: ", total)
-
+        back = input("Do you want scan again (y/n): ")
+        if back=='y' or back=='Y':
+            system('./scanning/main.py')
 
     # WebScan Used to gather website data
     def webscan():
@@ -413,7 +427,9 @@ try:
         total = t2 - t1
         print("Scanning completed in: ", total)
 
-
+        back = input("Do you want scan again (y/n): ")
+        if back=='y' or back=='Y':
+            system('./scanning/main.py')
     # Technology Scan
     def tlook():
         url = (input("Enter URL (eg: - http://google.com): "))
@@ -431,5 +447,6 @@ try:
         a = wlookup.whois(host)
         Output.wldata(a)
         print('\n', a)
+
 except:
     print("Unexpected error occured try again")
