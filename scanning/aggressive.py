@@ -62,6 +62,7 @@ try:
         back = input("Do you want scan again (y/n): ")
         if back == 'y' or back == 'Y':
             system('./scanning/main.py')
+        exit()
     # if os is windows run this part
     elif aggos.os == 'Linux':
         oper = 'Linux'
@@ -72,6 +73,6 @@ try:
         back = input("Do you want scan again (y/n): ")
         if back == 'y' or back == 'Y':
             system('./scanning/main.py')
-
+        exit()
 except:
     print("Unexpected error occured try again")
