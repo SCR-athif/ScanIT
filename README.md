@@ -6,9 +6,12 @@ to scan open ports, technology used in a website, whois lookup and other network
 data with minimum time and in an efficient manner
 
 # Installation steps:-
-1. sudo chmod +x */*.py
-2. pip install -r requirements.txt
-3. pip3 install --upgrade pyfiglet
+1. sudo apt-get update
+2. sudo apt install python3
+3. sudo apt install remmina
+4. sudo chmod +x */*.py
+5. pip install -r requirements.txt
+6. pip3 install --upgrade pyfiglet
 
 ## To run the program :
   we have two method to run this program 
