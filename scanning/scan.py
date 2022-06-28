@@ -101,7 +101,8 @@ try:
                 system('./scanning/main.py')
         except KeyboardInterrupt:
             print("unwanted input")
-
+        except OSError:
+            pass
 
     # Single Port Scanning
     def spt(IP):
