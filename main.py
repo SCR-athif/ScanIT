@@ -52,7 +52,8 @@ except KeyboardInterrupt:
     if back == 'n' or back == 'N':
         system('./main.py')
 
-
+    else:
+        print("unwanted input. Exiting...")
 except TypeError:
     print("Invalid Type   Exiting....")
 except:
