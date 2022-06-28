@@ -25,7 +25,7 @@ try:
             time.sleep(.001)
         print("-" * 60)
         print(
-            "Choose option: \n\n 1. Specific Port Scan\n\n 2. Specific Port Range Scan\n\n 3. Fulll port Scan (Take more time) \n\n Enter 0 to back ")
+            "Choose option: \n\n 1. Specific Port Scan\n\n 2. Specific Port Range Scan\n\n 3. Full port Scan (Take more time) \n\n Enter 0 to back ")
         a = int(input("\n\nEnter here: "))
         if a == 1:
             IP = input('\nEnter victims IP (eg: - 192.168.1.1): ')
