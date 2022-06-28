@@ -23,6 +23,7 @@ try:
         print("-" * 60)
         p = colored('+', 'red')
         IP = dataos.target
+        print('\n\n This may more time that expected, Sit back and relax :)')
         print('\n\n', p, 'OS : ', oper)
         Output.newline()
         Output.adata(dataos.os)

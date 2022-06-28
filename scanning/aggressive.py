@@ -26,6 +26,7 @@ try:
         IP = aggos.target
         Output.newline()
         Output.adata(aggos.os)
+        print('\n\n This may more time that expected, Sit back and relax :)')
         print('\n\n', p, 'OS :', oper)
         print("\n\nport        status         service           version")
         for port in range(1, 1024):
