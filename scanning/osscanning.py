@@ -6,12 +6,13 @@ from scapy.layers.inet import IP, ICMP, sr1
 from os import system
 
 try:
+    system('clear')
     # program to find OS in a network
     target = input("Enter the Ip address or Host: ")
     if '/24' in target:
         pass
     else:
-        system('clear')
+
         os = ''
         pack = IP(dst=target) / ICMP()
         resp = sr1(pack, timeout=3)
