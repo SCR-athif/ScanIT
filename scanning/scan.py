@@ -36,8 +36,7 @@ try:
         elif a == 3:
             fpt()
         elif a==0:
-            system('cd scanning')
-            system('./main.py')
+            system('./scanning/main.py')
 
     # Range Port scanning
     def rpt():
@@ -262,15 +261,19 @@ try:
             time.sleep(.001)
         print("-" * 60)
         print(
-            "Choose option: \n\n 1. Version scanning with range entry \n\n 2. Version Scanning with single entry \n\n 3. Version with full port scan (Take more time to complete scan)")
+            "Choose option: \n\n 1. Version scanning with range entry \n\n 2. Version Scanning with single entry \n\n 3. Version with full port scan (Take more time to complete scan) \n\n Enter 0 to back ")
         a = int(input("\nEnter your option: "))
-        IP = input("\nEnter Victims IP (eg: - 192.168.1.1): ")
         if (a == 2):
+            IP = input("\nEnter Victims IP (eg: - 192.168.1.1): ")
             sbs(IP)
         elif (a == 1):
+            IP = input("\nEnter Victims IP (eg: - 192.168.1.1): ")
             rbs(IP)
         elif a == 3:
+            IP = input("\nEnter Victims IP (eg: - 192.168.1.1): ")
             fbs(IP)
+        elif a==0:
+            system('./scanning/main.py')
         print('\n\n')
         for i in tqdm(range(10)):
             time.sleep(.01)
@@ -418,12 +421,14 @@ try:
             print(i, end='')
             time.sleep(.001)
         print("-" * 60)
-        print("Choose option: \n\n 1. Website Techology Scan \n\n 2. Website Whois Lookup")
+        print("Choose option: \n\n 1. Website Techology Scan \n\n 2. Website Whois Lookup \n\n Enter 0 to back")
         a = int(input("\nEnter here: "))
         if (a == 1):
             tlook()
         elif (a == 2):
             wlook()
+        elif a==0:
+            system('./scanning/main.py')
         print('\n\n')
         for i in tqdm(range(10)):
             time.sleep(.01)

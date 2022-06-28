@@ -9,8 +9,7 @@ try:
     # program to find OS in a network
     target = input("Enter the Ip address or Host: ")
     if '/24' in target:
-        net=target.split('.')
-        net2=
+        pass
     else:
         system('clear')
         os = ''
