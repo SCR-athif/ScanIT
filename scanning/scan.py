@@ -130,8 +130,6 @@ try:
                 back = input("Do you want scan again (y/n): ")
                 if back == 'y' or back == 'Y':
                     system('./scanning/main.py')
-        except KeyboardInterrupt:
-            print("unwanted input")
 
         except socket.gaierror:
             print('Hostname seems down')
@@ -456,6 +454,13 @@ try:
         a = wlookup.whois(host)
         Output.wldata(a)
         print('\n', a)
+except KeyboardInterrupt:
+    print("\n\n")
+    back = input("Do you want to EXIT (y/n): ")
+    if back == 'n' or back == 'N':
+        system('./scanning/main.py')
 
+    else:
+        print("Exiting...")
 except:
     print("Unexpected error occured try again")

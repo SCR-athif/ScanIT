@@ -56,6 +56,12 @@ try:
         a = wlookup.whois(host)
         Output.wldata(a)
         print('\n', a)
-
+except KeyboardInterrupt:
+    print("\n\n")
+    back = input("Do you want to EXIT (y/n): ")
+    if back == 'n' or back == 'N':
+        system('./recon/main.py')
+    else:
+        print("Exiting...")
 except:
     print("Unexpected error try again")

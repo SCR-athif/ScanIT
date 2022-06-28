@@ -75,5 +75,12 @@ try:
         if back == 'y' or back == 'Y':
             system('./scanning/main.py')
         exit()
+except KeyboardInterrupt:
+    print("\n\n")
+    back = input("Do you want to EXIT (y/n): ")
+    if back == 'n' or back == 'N':
+        system('./scanning/aggos.py')
+    else:
+        print("Exiting...")
 except:
     print("Unexpected error occured try again")

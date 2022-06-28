@@ -79,7 +79,7 @@ try:
         back = input("Do you want scan again (y/n): ")
         if back == 'y' or back == 'Y':
             system('./recon/main.py')
-
+        exit()
     # if os is linux Runs this part
     elif dataos.os == 'Linux':
         oper = 'Linux'
@@ -90,5 +90,13 @@ try:
         back = input("Do you want scan again (y/n): ")
         if back == 'y' or back == 'Y':
             system('./recon/main.py')
+        exit()
+except KeyboardInterrupt:
+    print("\n\n")
+    back = input("Do you want to EXIT (y/n): ")
+    if back == 'n' or back == 'N':
+        system('./recon/main.py')
+    else:
+        print("Exiting...")
 except:
     print("Unexpected error try again")

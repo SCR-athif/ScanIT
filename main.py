@@ -53,7 +53,7 @@ except KeyboardInterrupt:
         system('./main.py')
 
     else:
-        print("unwanted input. Exiting...")
+        print("Exiting...")
 except TypeError:
     print("Invalid Type   Exiting....")
 except:

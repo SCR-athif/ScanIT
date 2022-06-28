@@ -45,7 +45,13 @@ try:
         print("Wrong Entry")
 
 except KeyboardInterrupt:
-    print("unwanted input. Exiting...")
+    print("\n\n")
+    back = input("Do you want to EXIT (y/n): ")
+    if back == 'n' or back == 'N':
+        system('./recon/main.py')
+
+    else:
+        print("Exiting...")
 except TypeError:
     print("Invalid Type   Exiting....")
 except:
