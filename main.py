@@ -49,10 +49,10 @@ try:
 except KeyboardInterrupt:
     print("\n\n")
     back = input("Do you want to EXIT (y/n): ")
-    if back == 'y' or back == 'Y':
+    if back == 'n' or back == 'N':
         system('./main.py')
 
-    print("unwanted input. Exiting...")
+
 except TypeError:
     print("Invalid Type   Exiting....")
 except:
