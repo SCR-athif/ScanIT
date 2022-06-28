@@ -26,8 +26,8 @@ print('-'*60, "\n")
 #options of Choosing scan method
 a="""
 Choose option:
-    1. Simple Port Scan
-    2. Live host hunt
+    1. Live host hunt
+    2. Simple Port Scan
     3. Version Scan
     4. OS Detection Scan
     5. Aggressive Scanning
@@ -42,9 +42,9 @@ Choose option:
 print(a)
 try:
     a = int(input("Enter here: "))
-    if a==1:
+    if a==2:
         scan.portscan()
-    elif a==2:
+    elif a==1:
         scan.Total()
     elif a==3:
         scan.version()
