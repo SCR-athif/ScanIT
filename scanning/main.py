@@ -30,9 +30,9 @@ Choose option:
     2. Simple Port Scan
     3. Version Scan
     4. OS Detection Scan
-    5. Aggressive Scanning
-    6. Host Max Data Gathering
-    7. CVE scan
+    5. Aggressive Scanning (Take time to complete scanning)
+    6. Host Max Data Gathering (Take time to complete scanning)
+    7. CVE scan (Take time to complete scanning)
     8. Script Scan
     9. Web Scan
     
