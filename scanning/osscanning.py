@@ -31,5 +31,12 @@ try:
         back = input("Do you want scan again (y/n): ")
         if back == 'y' or back == 'Y':
             system('./scanning/main.py')
+except KeyboardInterrupt:
+    print("\n\n")
+    back = input("Do you want to EXIT (y/n): ")
+    if back == 'n' or back == 'N':
+        system('./scanning/osscanning.py')
+    else:
+        print("Exiting...")
 except:
     print("Unexpected error occured try again")
