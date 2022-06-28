@@ -47,6 +47,10 @@ try:
         print("Wrong Entry")
 
 except KeyboardInterrupt:
+    back = input("Do you want scan again (y/n): ")
+    if back == 'y' or back == 'Y':
+        system('./main.py')
+
     print("unwanted input. Exiting...")
 except TypeError:
     print("Invalid Type   Exiting....")
