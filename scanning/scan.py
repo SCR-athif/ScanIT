@@ -25,7 +25,7 @@ try:
             time.sleep(.001)
         print("-" * 60)
         print(
-            "Choose option: \n\n 1. Specific Port Scan\n\n 2. Specific Port Range Scan\n\n 3. Fulll port Scan (Take more time)")
+            "Choose option: \n\n 1. Specific Port Scan\n\n 2. Specific Port Range Scan\n\n 3. Fulll port Scan (Take more time) \n\n Enter 0 to back ")
         a = int(input("\n\nEnter here: "))
         if a == 1:
             IP = input('\nEnter victims IP (eg: - 192.168.1.1): ')
@@ -35,7 +35,8 @@ try:
             rpt()
         elif a == 3:
             fpt()
-
+        elif a==0:
+            system('./scanning/main.py')
 
     # Range Port scanning
     def rpt():
@@ -275,6 +276,7 @@ try:
         t2 = datetime.now()
         total = t2 - t1
         print("Scanning completed in: ", total)
+        back=input("\n Do you want to scan again (y/n)")
         if back=='y' or back=='Y':
             system('./scanning/main.py')
 

@@ -42,13 +42,13 @@ Choose option:
 print(a)
 try:
     a = int(input("Enter here: "))
-    if a==2:
+    if a==3:
         scan.portscan()
     elif a==1:
         scan.Total()
-    elif a==3:
-        scan.version()
     elif a==4:
+        scan.version()
+    elif a==2:
     	#Runs OSscanning With sudo previlage
         system('sudo ./scanning/osscanning.py')
     elif a==5:
