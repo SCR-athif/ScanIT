@@ -4,13 +4,37 @@
 import Output
 from scapy.layers.inet import IP, ICMP, sr1
 from os import system
-
+from package import map
 try:
     system('clear')
     # program to find OS in a network
     target = input("Enter the Ip address or Host: ")
+    nm = map.nmap.PortScanner()
     if '/24' in target:
-        pass
+        nm.scan(hosts=target, arguments='-n -sP')
+        hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
+        for host in hosts_list:
+            t=host[0]
+            os = ''
+            pack = IP(dst=t) / ICMP()
+            resp = sr1(pack, timeout=3)
+            if resp:
+                if IP in resp:
+                    ttl = resp.getlayer(IP).ttl
+                    if ttl <= 64:
+                        print(ttl)
+                        os = 'Linux'
+                    elif ttl > 64:
+                        os = 'Windows'
+                    else:
+                        print('Not Found')
+                    print('-'*100)
+                    a = f'\n\n*{t} : {os}* Operating System is Detected \n\n'
+                    Output.osdata(a)
+                    print(a)
+                    print('-'*100)
+                    print('\n\n')
+
     else:
 
         os = ''
@@ -26,7 +50,7 @@ try:
                     os = 'Windows'
                 else:
                     print('Not Found')
-                a = f'\n\n*{os}* Operating System is Detected \n\n'
+                a = f'\n\n*{target} : {os}* Operating System is Detected \n\n'
                 Output.osdata(a)
                 print(a)
         back = input("Do you want scan again (y/n): ")
@@ -39,5 +63,3 @@ except KeyboardInterrupt:
         system('./scanning/osscanning.py')
     else:
         print("Exiting...")
-except:
-    print("Unexpected error occured try again")

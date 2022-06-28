@@ -159,7 +159,7 @@ try:
                 hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
                 Output.newline()
                 for host, status in hosts_list:
-                    print(host + ' ' + status)
+                    print(host + 'is' + status)
                     Output.fdata(host, status)
             else:
                 nm.scan(hosts=IP, arguments='-n -sP')
