@@ -47,7 +47,8 @@ try:
         print("Wrong Entry")
 
 except KeyboardInterrupt:
-    back = input("Do you want scan again (y/n): ")
+    print("\n\n")
+    back = input("Do you want to EXIT (y/n): ")
     if back == 'y' or back == 'Y':
         system('./main.py')
 
