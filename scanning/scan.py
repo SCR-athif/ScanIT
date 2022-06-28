@@ -36,7 +36,8 @@ try:
         elif a == 3:
             fpt()
         elif a==0:
-            system('./scanning/main.py')
+            system('cd scanning')
+            system('./main.py')
 
     # Range Port scanning
     def rpt():
