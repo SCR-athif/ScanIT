@@ -44,7 +44,6 @@ try:
         with open("history.txt", "a") as m:
             m.write(f'{a}')
 
-
     def fdata(a, b):
         with open("history.txt", "a") as m:
             m.write(f'\n{a} is {b} \n')

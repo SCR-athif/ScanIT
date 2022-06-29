@@ -14,6 +14,7 @@ try:
         nm.scan(hosts=target, arguments='-n -sP')
         hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
         Output.newline()
+
         for host in hosts_list:
             t=host[0]
             os = ''
