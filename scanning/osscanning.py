@@ -68,4 +68,4 @@ except KeyboardInterrupt:
     if back == 'n' or back == 'N':
         system('./scanning/osscanning.py')
     else:
-        print("Exiting...")
+        system('./scanning/main.py')
