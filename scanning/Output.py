@@ -42,13 +42,7 @@ try:
 
     def osdata(a):
         with open("history.txt", "a") as m:
-            for i in range(100):
-                m.write("-")
-            m.write("\nnew scan\n")
-            for i in range(100):
-                m.write("-")
             m.write(f'{a}')
-
 
     def fdata(a, b):
         with open("history.txt", "a") as m:
