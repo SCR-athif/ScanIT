@@ -5,6 +5,7 @@ import Output
 from scapy.layers.inet import IP, ICMP, sr1
 from os import system
 from package import map
+from termcolor import colored
 try:
     system('clear')
     # program to find OS in a network
@@ -31,7 +32,7 @@ try:
                     else:
                         print('Not Found')
                     print('-'*100)
-                    a = f'\n\n*{t} : {os}* Operating System is Detected \n\n'
+                    a = colored(f'\n\n*{t} : {os}* Operating System is Detected \n\n','green')
                     Output.osdata(a)
                     print(a)
                     print('-'*100)
@@ -57,7 +58,7 @@ try:
                     os = 'Windows'
                 else:
                     print('Not Found')
-                a = f'\n\n*{target} : {os}* Operating System is Detected \n\n'
+                a = colored(f'\n\n*{t} : {os}* Operating System is Detected \n\n','green')
                 Output.newline()
                 Output.osdata(a)
                 print(a)
