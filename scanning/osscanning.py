@@ -13,6 +13,7 @@ try:
     if '/24' in target:
         nm.scan(hosts=target, arguments='-n -sP')
         hosts_list = [(x, nm[x]['status']['state']) for x in nm.all_hosts()]
+        Output.newline()
         for host in hosts_list:
             t=host[0]
             os = ''
@@ -54,6 +55,7 @@ try:
                 else:
                     print('Not Found')
                 a = f'\n\n*{target} : {os}* Operating System is Detected \n\n'
+                Output.newline()
                 Output.osdata(a)
                 print(a)
         back = input("Do you want scan again (y/n): ")
