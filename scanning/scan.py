@@ -65,8 +65,7 @@ try:
             back = input("Do you want scan again (y/n): ")
             if back == 'y' or back == 'Y':
                 system('./scanning/main.py')
-        except KeyboardInterrupt:
-            print("unwanted input")
+
 
         except socket.gaierror:
             print('Hostname seems down')
@@ -100,11 +99,14 @@ try:
             back = input("Do you want scan again (y/n): ")
             if back == 'y' or back == 'Y':
                 system('./scanning/main.py')
-        except KeyboardInterrupt:
-            print("unwanted input")
+
         except OSError:
             pass
+        except socket.gaierror:
+            print('Hostname seems down')
 
+        except socket.error:
+            print("Couldn't connect to server")
     # Single Port Scanning
     def spt(IP):
         try:
