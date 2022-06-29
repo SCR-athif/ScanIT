@@ -31,6 +31,6 @@ except KeyboardInterrupt:
     if back == 'n' or back == 'N':
         system('./scanning/dataos.py')
     else:
-        print("Exiting...")
+        system('./scanning/main.py')
 except:
     print("Unexpected error occured try again")

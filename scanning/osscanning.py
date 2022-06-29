@@ -39,6 +39,8 @@ try:
         back = input("Do you want scan again (y/n): ")
         if back == 'y' or back == 'Y':
             system('./scanning/osscanning.py')
+        else:
+            system('./scanning/main.py')
 
     else:
 
@@ -62,6 +64,8 @@ try:
         back = input("Do you want scan again (y/n): ")
         if back == 'y' or back == 'Y':
             system('./scanning/osscanning.py')
+        else:
+            system('./scanning/main.py')
 except KeyboardInterrupt:
     print("\n\n")
     back = input("Do you want to EXIT (y/n): ")
