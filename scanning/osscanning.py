@@ -25,7 +25,6 @@ try:
                 if IP in resp:
                     ttl = resp.getlayer(IP).ttl
                     if ttl <= 64:
-                        print(ttl)
                         os = 'Linux'
                     elif ttl > 64:
                         os = 'Windows'
