@@ -197,9 +197,9 @@ try:
 
                 2. Scan in specific port
 
-                3. Scan in set of port:
-
-            Mode 2 and 3 is very slow process due to port scanning if you just want to know up hosts go with option 1
+                3. Scan in set of port (Slow Mode)
+    
+            Enter 0 to go back 
             """
             print(a)
             a = int(input("Enter here: "))
@@ -226,7 +226,8 @@ try:
                         if (rscan(addr, port1)):
                             Output.total(addr)
                             print(addr, "is up")
-
+            elif a == 0:
+                system('./scanning/main.py')
         def entry():
             global net, net1, l, net2, st1, en1, n1, n2
             net = input("Enter the IP address (eg: - 192.168.1.1): ")
