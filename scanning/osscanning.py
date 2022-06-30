@@ -57,7 +57,11 @@ try:
                     os = 'Windows'
                 else:
                     print('Not Found')
+
                 a = colored(f'\n\n*{target} : {os}* Operating System is Detected \n\n','green')
+
+                a = f'\n\n*{target} : {os}* Operating System is Detected \n\n'
+
                 Output.newline()
                 Output.osdata(a)
                 print(a)
