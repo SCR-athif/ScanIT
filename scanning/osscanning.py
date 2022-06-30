@@ -17,20 +17,21 @@ try:
 
 
     def transmitPacket(packet):
-        success_list, failure_list = scapy.srp(packet, timeout=1)
+        success_list, failure_list = scapy.srp(packet, timeout=2)
         return success_list
 
 
     def getOS(ip_addr):
         ttl_values = {32: "Windows", 60: "MAC OS", 64: "Linux", 128: "Windows", 255: "Linux 2.4 Kernal"}
-        ans = scapy.sr1(IP(dst=str(ip_addr)) / ICMP(), timeout=1, verbose=0)
+        ans = scapy.sr1(IP(dst=str(ip_addr)) / ICMP(), timeout=2, verbose=0)
+
         if ans:
             if ans.ttl in ttl_values:
                 return ttl_values.get(ans.ttl)
             else:
-                return "could not figure the OS version"
+                return "OS detection blocked"
         else:
-            return "Packets could not send successfully"
+            return "Packets transmitting failed"
 
 
     def parseResponse(success_list):
