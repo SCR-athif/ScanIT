@@ -2,7 +2,7 @@
 import argparse, socket, time, json, datetime, platform, psutil, requests, pprint, uuid
 from tqdm import tqdm
 from os import system,name
-
+from tabulate import tabulate
 
 try:
     if name == 'nt':
@@ -27,9 +27,10 @@ try:
 
 
     def main():
+
         # Hostname Info
         hostname = socket.gethostname()
-        print("\nHostname:", hostname)
+
 
         # Platform Info
         system = {
@@ -38,18 +39,26 @@ try:
         }
         global ans
         ans = system["name"] + ' ' + ' ' + system["version"]
-        print("\nOS:", ans)
+
 
         # Time Info
         timestamp = datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%S+00:00")
         uptime = int(time.time() - psutil.boot_time())
-        print("\nSystem Uptime:", uptime)
+        print("\n\nHost details:")
+        table_data = {
+            'Hostname': [hostname],
+            'OS': [ans],
+            'System Uptime': [uptime]
+        }
+        print(tabulate(table_data, headers="keys", tablefmt="psql", showindex="True"))
         print('\n')
 
         # CPU Info
         cpu_count = psutil.cpu_count()
         cpu_usage = psutil.cpu_percent(interval=1)
-        print("CPU:\n\tCount:", cpu_count, "\n\tUsage:", cpu_usage)
+        print("CPU:")
+        cpu_tb={"Count":[cpu_count], "Usage":[cpu_usage]}
+        print(tabulate(cpu_tb,headers='keys',tablefmt='psql'))
         print('\n')
 
         # Memory Info
@@ -57,8 +66,9 @@ try:
         memory_total = memory_stats.total
         memory_used = memory_stats.used
         memory_used_percent = memory_stats.percent
-        print("Memory:\n\tPercent:", memory_used_percent, "\n\tTotal:", memory_total / 1e+6, "MB", "\n\tUsed:",
-              memory_used / 1e+6, "MB")
+        print("Memory:")
+        memory_tb={"Percent":[memory_used_percent],"Total":[memory_total / 1e+6,"MB"],"Used":[memory_used / 1e+6, "MB"]}
+        print(tabulate(memory_tb,headers='keys',tablefmt='psql'))
         print('\n')
 
         # Disk Info
@@ -70,27 +80,28 @@ try:
             # Try fixes issues with connected 'disk' such as CD-ROMS, Phones, etc.
             try:
                 disk = {
-                    "name": x.device,
-                    "mount_point": x.mountpoint,
-                    "type": x.fstype,
-                    "total_size": psutil.disk_usage(x.mountpoint).total,
-                    "used_size": psutil.disk_usage(x.mountpoint).used,
-                    "percent_used": psutil.disk_usage(x.mountpoint).percent
+                    "name": [x.device],
+                    "mount_point": [x.mountpoint],
+                    "type": [x.fstype],
+                    "total_size": [psutil.disk_usage(x.mountpoint).total],
+                    "used_size": [psutil.disk_usage(x.mountpoint).used],
+                    "percent_used": [psutil.disk_usage(x.mountpoint).percent]
                 }
 
                 disks.append(disk)
+                print(tabulate(disk, headers='keys', tablefmt='psql'))
 
-                print("\tDisk name", disk["name"], "\n\tMount Point:", disk["mount_point"], "\tType", disk["type"],
-                      "\n\tSize:", disk["total_size"] / 1e+9, "\n\tUsage:", disk["used_size"] / 1e+9,
-                      "\n\tPercent Used:", disk["percent_used"])
             except:
                 print("")
         print('\n')
 
         # Bandwidth Info
         network_stats = get_bandwidth()
-        print("Network:\n\tTraffic in:", network_stats["traffic_in"] / 1e+6, "\n\tTraffic out:",
-              network_stats["traffic_out"] / 1e+6)
+        print("Network:\n")
+        network_tb={"Traffic in":[network_stats["traffic_in"] / 1e+6],
+                    "Traffic out":[network_stats["traffic_out"] / 1e+6]
+                    }
+        print(tabulate(network_tb,headers='keys',tablefmt='psql'))
         print('\n')
 
         # Network Info
@@ -115,8 +126,14 @@ try:
                 elif snic.family == 23:
                     nic["address6"] = snic.address
             nics.append(nic)
-            print("\tNIC:", nic["name"], "\tMAC:", nic["mac"], "\tIPv4 Address:", nic["address"], "\tIPv4 Subnet:",
-                  nic["netmask"], "\tIPv6 Address:", nic["address6"])
+
+            nic_data = {"NIC": [nic["name"]],
+                        "MAC": [nic["mac"]],
+                        "IPv4 Address": [nic["address"]],
+                        "IPv4 Subnet": [nic["netmask"]],
+                        "IPv6 Address": [nic["address6"]]
+                        }
+            print(tabulate(nic_data, headers='keys', tablefmt='psql'))
         print('\n')
 
         try:
@@ -125,26 +142,26 @@ try:
 
             # Set Machine Info
             machine = {
-                "hostname": hostname,
-                "uuid": sys_uuid,
-                "system": ans,
-                "uptime": uptime,
-                "cpu_count": cpu_count,
-                "cpu_usage": cpu_usage,
-                "memory_total": memory_total,
-                "memory_used": memory_used,
-                "memory_used_percent": memory_used_percent,
-                "network_up": network_stats["traffic_out"],
-                "network_down": network_stats["traffic_in"],
-                "timestamp": timestamp
+                "hostname": [hostname],
+                "uuid": [sys_uuid],
+                "system": [ans],
+                "uptime": [uptime],
+                "cpu_count": [cpu_count],
+                "cpu_usage": [cpu_usage],
+                "memory_total": [memory_total],
+                "memory_used": [memory_used],
+                "memory_used_percent": [memory_used_percent],
+                "network_up": [network_stats["traffic_out"]],
+                "network_down": [network_stats["traffic_in"]],
+                "timestamp": [timestamp]
             }
 
             data = json.dumps(machine)
             print("Data:")
-            for k, v in machine.items():
-                print('\t', k, ': ', v)
+            print(tabulate(machine,headers='keys',tablefmt='psql'))
 
-            send_data(data)
+
+
         except:
             print("")
 
@@ -202,9 +219,8 @@ try:
             # If no connection established for attempts*timeout, kill script
             exit(0)
 
-
     main()
-
+    print("\n\n")
     for i in tqdm(range(10), 'Data Gathering completed', colour='green'):
         time.sleep(.1)
 

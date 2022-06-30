@@ -41,6 +41,7 @@ try:
     if a==1:
         gain.dos()
     elif a==2:
+        system('clear')
         ip = input("Enter victim ip (eg:- 192.168.1.1): ")
         system('./Attacking/blue.py '+ip)
     if a==3:
@@ -58,7 +59,7 @@ except KeyboardInterrupt:
     if back == 'n' or back == 'N':
         system('./Attacking/main.py')
     else:
-        print("Exiting...")
+        system('./main.py')
 except TypeError:
     print("Invalid Type   Exiting....")
 except:

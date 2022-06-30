@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 import os, sys, socket, re
+from os import system
 
 try:
 	IPs_to_hack = []
@@ -84,6 +85,11 @@ try:
 	attack(target)
 
 except KeyboardInterrupt:
-    print("unwanted input. Exiting...")
+	print("\n\n")
+	back = input("Do you want to EXIT (y/n): ")
+	if back == 'n' or back == 'N':
+		system('./Attacking/main.py')
+	else:
+		system('./main.py')
 except:
     print("Unexpected error try again")
