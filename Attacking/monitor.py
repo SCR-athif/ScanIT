@@ -219,7 +219,6 @@ try:
             # If no connection established for attempts*timeout, kill script
             exit(0)
 
-
     main()
     print("\n\n")
     for i in tqdm(range(10), 'Data Gathering completed', colour='green'):
