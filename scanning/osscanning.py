@@ -9,7 +9,6 @@ from os import system
 try:
     system('clear')
 
-
     def createPacket(ip):
         arp_request = scapy.ARP(pdst=ip)  # create a ARP request object by scapy
         broadcast = scapy.Ether(dst="ff:ff:ff:ff:ff:ff")  # We have set the destination
