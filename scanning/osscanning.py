@@ -1,6 +1,6 @@
 #!/usr/bin/python
 
-import optparse, Output
+import Output
 import scapy.all as scapy
 from scapy.layers.inet import IP, ICMP
 from termcolor import colored
