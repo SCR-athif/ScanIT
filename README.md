@@ -26,7 +26,7 @@ You can read scanned data from history text file, all kind of **scan result** wi
 **Mohammmed Athif - Port Scanning  
 Mohammed Hadhil - Website lookup  
 Arun T Thankchan - Version Scanning  
-Rohit N - Total network Scanning  
+Rohith N - Total network Scanning  
 Mohammed Abdu Rahman - CVE scanning  
 Anay K - Script Scanning  
 Midhun T - Aggressive Sacnning  
