@@ -5,7 +5,12 @@ A **better, efficient, user-friendly** network scanning tool. Which help an ethi
 to scan open ports, technology used in a website, whois lookup and other network related
 data with minimum time and in an efficient manner
 
-# Installation steps:-
+# Installation:-
+
+## Download
+  https://github.com/SCR-athif/ScanIT.git
+  
+## Installation Steps
 1. sudo apt-get update
 2. sudo apt install python3
 3. sudo apt install remmina
