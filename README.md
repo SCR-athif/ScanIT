@@ -8,7 +8,7 @@ data with minimum time and in an efficient manner
 # Installation:-
 
 ## Download
-  https://github.com/SCR-athif/ScanIT.git
+    git clone https://github.com/SCR-athif/ScanIT.git
   
 ## Installation Steps
 1. sudo apt-get update
